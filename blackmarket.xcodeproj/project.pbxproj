@@ -25,6 +25,9 @@
 		249567B928E4EFFE00E878A0 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567B828E4EFFE00E878A0 /* TextFieldStyles.swift */; };
 		249567BB28E4F04100E878A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567BA28E4F04100E878A0 /* Constants.swift */; };
 		249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567BE28E4FE5600E878A0 /* SignInViewModel.swift */; };
+		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
+		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
+		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		249567B828E4EFFE00E878A0 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		249567BA28E4F04100E878A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		249567BE28E4FE5600E878A0 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				249567BE28E4FE5600E878A0 /* SignInViewModel.swift */,
+				249567C228E7721F00E878A0 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -246,6 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				2475D80328E3CED700630DE5 /* SignInView.swift */,
+				249567C028E771FD00E878A0 /* SignUpView.swift */,
+				249567C428EA599500E878A0 /* ForgotPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,11 +396,14 @@
 				2475D80428E3CED700630DE5 /* SignInView.swift in Sources */,
 				249567B528E4EFC800E878A0 /* TextFieldView.swift in Sources */,
 				2475D82D28E4DABE00630DE5 /* StateButton.swift in Sources */,
+				249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */,
 				249567A928E4EEF700E878A0 /* LocalizedString.swift in Sources */,
 				249567A328E4E96D00E878A0 /* String.swift in Sources */,
+				249567C128E771FD00E878A0 /* SignUpView.swift in Sources */,
 				249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */,
 				249567B628E4EFC800E878A0 /* TextFieldViewConfiguration.swift in Sources */,
 				2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */,
+				249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */,
 				249567A028E4E74E00E878A0 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
