@@ -28,6 +28,19 @@
 		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
 		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
 		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
+		24B13A8328EB99E3002364E9 /* RSSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8228EB99E3002364E9 /* RSSwiftNetworking */; };
+		24B13A8528EB99E3002364E9 /* RSSwiftNetworkingAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8428EB99E3002364E9 /* RSSwiftNetworkingAlamofire */; };
+		24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */; };
+		24B13A9528EB9AD9002364E9 /* APIClient+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A8B28EB9AD9002364E9 /* APIClient+Application.swift */; };
+		24B13A9828EB9AD9002364E9 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A9028EB9AD9002364E9 /* AuthEndpoint.swift */; };
+		24B13A9B28EB9AD9002364E9 /* AuthenticationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A9328EB9AD9002364E9 /* AuthenticationServices.swift */; };
+		24B13AA028EB9B08002364E9 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A9D28EB9B08002364E9 /* UserDataManager.swift */; };
+		24B13AA228EB9B08002364E9 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A9F28EB9B08002364E9 /* SessionManager.swift */; };
+		24B13AA628EB9B74002364E9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AA328EB9B74002364E9 /* Session.swift */; };
+		24B13AA828EB9B74002364E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AA528EB9B74002364E9 /* User.swift */; };
+		24B13AAA28EB9FA3002364E9 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AA928EB9FA3002364E9 /* Dictionary.swift */; };
+		24B13AAD28EBA029002364E9 /* JSONEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AAC28EBA029002364E9 /* JSONEncoding.swift */; };
+		24B13AAF28EBA08B002364E9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AAE28EBA08B002364E9 /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +86,17 @@
 		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadersProvider.swift; sourceTree = "<group>"; };
+		24B13A8B28EB9AD9002364E9 /* APIClient+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIClient+Application.swift"; sourceTree = "<group>"; };
+		24B13A9028EB9AD9002364E9 /* AuthEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		24B13A9328EB9AD9002364E9 /* AuthenticationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationServices.swift; sourceTree = "<group>"; };
+		24B13A9D28EB9B08002364E9 /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		24B13A9F28EB9B08002364E9 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		24B13AA328EB9B74002364E9 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		24B13AA528EB9B74002364E9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		24B13AA928EB9FA3002364E9 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		24B13AAC28EBA029002364E9 /* JSONEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoding.swift; sourceTree = "<group>"; };
+		24B13AAE28EBA08B002364E9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24B13A8528EB99E3002364E9 /* RSSwiftNetworkingAlamofire in Frameworks */,
+				24B13A8328EB99E3002364E9 /* RSSwiftNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,11 +149,13 @@
 		2475D80028E3CED700630DE5 /* blackmarket */ = {
 			isa = PBXGroup;
 			children = (
+				24B13A9C28EB9B08002364E9 /* Managers */,
 				2475D80728E3CED800630DE5 /* blackmarket.entitlements */,
 				249567A728E4E9BE00E878A0 /* Application */,
 				249567AD28E4EF4B00E878A0 /* Core */,
 				249567AE28E4EF7700E878A0 /* UI */,
 				249567AA28E4EF0A00E878A0 /* Resources */,
+				24B13A8628EB9AD9002364E9 /* Networking */,
 				2475D80828E3CED800630DE5 /* Preview Content */,
 			);
 			path = blackmarket;
@@ -163,6 +191,8 @@
 			children = (
 				2495679F28E4E74E00E878A0 /* Color.swift */,
 				249567A228E4E96D00E878A0 /* String.swift */,
+				24B13AA928EB9FA3002364E9 /* Dictionary.swift */,
+				24B13AAC28EBA029002364E9 /* JSONEncoding.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +226,7 @@
 		249567AD28E4EF4B00E878A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				24B13AAB28EB9FB7002364E9 /* Models */,
 				249567A128E4E95C00E878A0 /* Extensions */,
 				249567A428E4E99900E878A0 /* Protocols */,
 			);
@@ -259,6 +290,76 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		24B13A8628EB9AD9002364E9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A8728EB9AD9002364E9 /* Types */,
+				24B13A8A28EB9AD9002364E9 /* Extensions */,
+				24B13A8C28EB9AD9002364E9 /* Services */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		24B13A8728EB9AD9002364E9 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A8828EB9AD9002364E9 /* API */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		24B13A8828EB9AD9002364E9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		24B13A8A28EB9AD9002364E9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A8B28EB9AD9002364E9 /* APIClient+Application.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		24B13A8C28EB9AD9002364E9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A8F28EB9AD9002364E9 /* Endpoints */,
+				24B13A9328EB9AD9002364E9 /* AuthenticationServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		24B13A8F28EB9AD9002364E9 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A9028EB9AD9002364E9 /* AuthEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		24B13A9C28EB9B08002364E9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				24B13A9D28EB9B08002364E9 /* UserDataManager.swift */,
+				24B13A9F28EB9B08002364E9 /* SessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		24B13AAB28EB9FB7002364E9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24B13AA328EB9B74002364E9 /* Session.swift */,
+				24B13AA528EB9B74002364E9 /* User.swift */,
+				24B13AAE28EBA08B002364E9 /* AppError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,6 +376,10 @@
 			dependencies = (
 			);
 			name = blackmarket;
+			packageProductDependencies = (
+				24B13A8228EB99E3002364E9 /* RSSwiftNetworking */,
+				24B13A8428EB99E3002364E9 /* RSSwiftNetworkingAlamofire */,
+			);
 			productName = blackmarket;
 			productReference = 2475D7FE28E3CED700630DE5 /* blackmarket.app */;
 			productType = "com.apple.product-type.application";
@@ -347,6 +452,9 @@
 				Base,
 			);
 			mainGroup = 2475D7F528E3CED700630DE5;
+			packageReferences = (
+				24B13A8128EB99E3002364E9 /* XCRemoteSwiftPackageReference "RSSwiftNetworking" */,
+			);
 			productRefGroup = 2475D7FF28E3CED700630DE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,17 +500,28 @@
 			files = (
 				249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */,
 				249567BB28E4F04100E878A0 /* Constants.swift in Sources */,
+				24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */,
+				24B13A9528EB9AD9002364E9 /* APIClient+Application.swift in Sources */,
+				24B13AAF28EBA08B002364E9 /* AppError.swift in Sources */,
 				249567B928E4EFFE00E878A0 /* TextFieldStyles.swift in Sources */,
+				24B13AAD28EBA029002364E9 /* JSONEncoding.swift in Sources */,
 				2475D80428E3CED700630DE5 /* SignInView.swift in Sources */,
+				24B13AA828EB9B74002364E9 /* User.swift in Sources */,
 				249567B528E4EFC800E878A0 /* TextFieldView.swift in Sources */,
 				2475D82D28E4DABE00630DE5 /* StateButton.swift in Sources */,
+				24B13A9828EB9AD9002364E9 /* AuthEndpoint.swift in Sources */,
 				249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */,
 				249567A928E4EEF700E878A0 /* LocalizedString.swift in Sources */,
+				24B13AA228EB9B08002364E9 /* SessionManager.swift in Sources */,
 				249567A328E4E96D00E878A0 /* String.swift in Sources */,
 				249567C128E771FD00E878A0 /* SignUpView.swift in Sources */,
 				249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */,
+				24B13AA628EB9B74002364E9 /* Session.swift in Sources */,
+				24B13A9B28EB9AD9002364E9 /* AuthenticationServices.swift in Sources */,
 				249567B628E4EFC800E878A0 /* TextFieldViewConfiguration.swift in Sources */,
 				2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */,
+				24B13AA028EB9B08002364E9 /* UserDataManager.swift in Sources */,
+				24B13AAA28EB9FA3002364E9 /* Dictionary.swift in Sources */,
 				249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */,
 				249567A028E4E74E00E878A0 /* Color.swift in Sources */,
 			);
@@ -756,6 +875,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24B13A8128EB99E3002364E9 /* XCRemoteSwiftPackageReference "RSSwiftNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rootstrap/RSSwiftNetworking.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24B13A8228EB99E3002364E9 /* RSSwiftNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24B13A8128EB99E3002364E9 /* XCRemoteSwiftPackageReference "RSSwiftNetworking" */;
+			productName = RSSwiftNetworking;
+		};
+		24B13A8428EB99E3002364E9 /* RSSwiftNetworkingAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24B13A8128EB99E3002364E9 /* XCRemoteSwiftPackageReference "RSSwiftNetworking" */;
+			productName = RSSwiftNetworkingAlamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2475D7F628E3CED700630DE5 /* Project object */;
 }
