@@ -13,73 +13,74 @@ class SignUpViewModel: ObservableObject, Identifiable {
     
     private let cockiesPrivacy = "https://www.grafterr.com/cookie-policy?gclid=CjwKCAjwp9qZBhBkEiwAsYFsb5_jgSsJFbQvqYDNyqLhOrgi8KZZqZjcZjUXKk9-Cj-vbV0ZgQgx6RoCIKEQAvD_BwE"
     
-    @Published
-    var emailConfiguration = TextFieldViewConfiguration(
+    @Published var emailConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignUpTextField.emailTitle,
         placeholder: LocalizedString.SignUpTextField.emailPlaceholder,
         validations: [.email, .nonEmpty],
         errorMessage: LocalizedString.SignUpTextField.emailError
     )
     
-    @Published
-    var nameConfiguration = TextFieldViewConfiguration(
+    @Published var nameConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignUpTextField.nameTitle,
         placeholder: LocalizedString.SignUpTextField.namePlaceholder,
         validations: [.nonEmpty],
         errorMessage: LocalizedString.SignUpTextField.nameError
     )
     
-    @Published
-    var passwordConfiguration = TextFieldViewConfiguration(
+    @Published var passwordConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignUpTextField.passwordTitle,
         placeholder: LocalizedString.SignUpTextField.passwordPlaceholder,
         validations: [.nonEmpty],
         isSecure: true,
         errorMessage: LocalizedString.SignUpTextField.passwordError
     )
-        
+    
     var isValid: Bool {
         return [emailConfiguration, passwordConfiguration].allSatisfy { $0.isValid }
     }
     
     lazy var disclaimerString: AttributedString = {
         do {
-            var text = try AttributedString(markdown: "\(LocalizedString.SignUpView.disclaimer) [\(LocalizedString.SignUpView.dataPolicy)](\(dataPrivacy)) \(LocalizedString.SignUpView.disclaimerEnd) [\(LocalizedString.SignUpView.cookiesPolicy)](\(cockiesPrivacy))")
-     
-            if let range = text.range(of: LocalizedString.SignUpView.dataPolicy) {
-                text[range].font = .subheadline.bold()
+            let dataPolicyString = LocalizedString.SignUpView.dataPolicy
+            let cookiesPolicyString = LocalizedString.SignUpView.cookiesPolicy
+            
+            var text = try AttributedString(
+                markdown: """
+                            \(LocalizedString.SignUpView.disclaimer) [\(dataPolicyString)](\(dataPrivacy)) \(LocalizedString.SignUpView.disclaimerEnd) [\(cookiesPolicyString)](\(cockiesPrivacy))
+                            """
+            )
+            
+            let highlights = [dataPolicyString, cookiesPolicyString]
+            for highlight in highlights {
+                if let range = text.range(of: highlight) {
+                    text[range].font = .subheadline.bold()
+                }
             }
             
-            if let range = text.range(of: LocalizedString.SignUpView.cookiesPolicy) {
-                text[range].font = .subheadline.bold()
-            }
-     
             return text
-     
         } catch {
-            return ""
+            return AttributedString(stringLiteral: "error".localized)
         }
     }()
     
     lazy var alreadyHaveAnAccountString: AttributedString = {
         do {
             var text = try AttributedString(markdown: LocalizedString.SignUpView.alreadyHaveAnAccountLabel)
-     
+            
             if let range = text.range(of: LocalizedString.SignUpView.alreadyHaveAnAccountLogInLabel) {
                 text[range].font = .subheadline.bold()
-                text[range].foregroundColor = Color.ui.link
+                text[range].foregroundColor = Color.link
             }
-     
+            
             return text
-     
         } catch {
-            return ""
+            return AttributedString(stringLiteral: "error".localized)
         }
     }()
-        
+    
     func logIn() {
         print("Log in button tapped")
-    }    
+    }
 }
 
 private extension LocalizedString {

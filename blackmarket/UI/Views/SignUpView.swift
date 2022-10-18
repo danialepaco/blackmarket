@@ -25,10 +25,12 @@ struct SignUpView: View {
                     TextFieldView(fieldConfiguration: $viewModel.passwordConfiguration)
                 }
                 .padding(.horizontal, 28.0)
-
-                StateButton(action: {
-                    viewModel.logIn()
-                }, title: LocalizedString.SignUpScreen.signUpButtonTitle, isEnabled: viewModel.isValid)
+                
+                StateButton(
+                    action: { viewModel.logIn() },
+                    title: LocalizedString.SignUpScreen.signUpButtonTitle,
+                    isEnabled: viewModel.isValid
+                )
                 .frame(maxHeight: 45)
                 .padding(.horizontal, 28.0)
                 .padding(.bottom, 16.0)
@@ -36,7 +38,7 @@ struct SignUpView: View {
                 Text(viewModel.disclaimerString)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .tint(Color.ui.link)
+                    .tint(Color.link)
                     .padding(.horizontal, 28.0)
                     .padding(.bottom, 16.0)
                 

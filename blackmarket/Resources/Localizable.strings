@@ -6,9 +6,9 @@
   
 */
 
-// MARK: COMMON
+// MARK: CONSTANTS
 
-"example_title" = "Welcome %@, %@";
+"error" = "error";
 
 // MARK: SIGN IN SCREEN
 

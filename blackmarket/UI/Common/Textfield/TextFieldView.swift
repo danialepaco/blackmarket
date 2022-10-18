@@ -18,8 +18,11 @@ struct TextFieldView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(Font.headline.weight(.regular))
                     .foregroundColor(.black)
-                    .opacity(fieldConfiguration.isEmpty ?
-                             UI.TextFieldView.textOpacityEmpty : UI.TextFieldView.textOpacityNotEmpty)
+                    .opacity(
+                        fieldConfiguration.isEmpty
+                        ? UI.TextFieldView.textOpacityEmpty
+                        : UI.TextFieldView.textOpacityNotEmpty
+                    )
                 
                 if fieldConfiguration.isSecure {
                     SecureField(fieldConfiguration.placeholder, text: $fieldConfiguration.value)
@@ -45,10 +48,11 @@ struct TextFieldView: View {
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: UI.TextFieldView.rectangleHeight)
                 .foregroundColor(fieldConfiguration.shouldShowError ? .red : .black)
-                .opacity(fieldConfiguration.isEmpty ?
-                         UI.TextFieldView.rectangleOpacityEmpty : UI.TextFieldView.rectangleOpacityNotEmpty
+                .opacity(
+                    fieldConfiguration.isEmpty
+                    ? UI.TextFieldView.rectangleOpacityEmpty
+                    : UI.TextFieldView.rectangleOpacityNotEmpty
                 )
-            
             Text(fieldConfiguration.errorMessage)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .offset(CGSize(width: .zero, height: UI.TextFieldView.errorTextOffset))

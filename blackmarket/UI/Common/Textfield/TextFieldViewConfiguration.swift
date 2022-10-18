@@ -30,12 +30,14 @@ final class TextFieldViewConfiguration: ObservableObject {
         !isEmpty && !isValid
     }
     
-    init(title: String,
-         placeholder: String,
-         value: String = "",
-         validations: [ValidationType] = [.none],
-         isSecure: Bool = false,
-         errorMessage: String = "") {
+    init(
+        title: String,
+        placeholder: String,
+        value: String = "",
+        validations: [ValidationType] = [.none],
+        isSecure: Bool = false,
+        errorMessage: String = ""
+    ) {
         self.title = title
         self.placeholder = placeholder
         self.value = value

@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension Color {
-    static let ui = Color.UI()
-    
-    struct UI {
-         let link = Color("link")
-    }
+    static let link = Color("link")
+    static let white = Color.white
+    static let disabledGray = Color("disabledGray")
+    static let black = Color("black")
+    static let bone = Color("bone")
 }
 
 // Color extension to use hex values

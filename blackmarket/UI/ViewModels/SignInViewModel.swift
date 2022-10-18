@@ -5,20 +5,18 @@
 //  Created by Daniel Parra on 9/28/22.
 //
 
-import SwiftUI
+import Foundation
 
 class SignInViewModel: ObservableObject, Identifiable {
     
-    @Published
-    var emailConfiguration = TextFieldViewConfiguration(
+    @Published var emailConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignInTextField.emailTitle,
         placeholder: LocalizedString.SignInTextField.emailPlaceholder,
         validations: [.email, .nonEmpty],
         errorMessage: LocalizedString.SignInTextField.emailError
     )
     
-    @Published
-    var passwordConfiguration = TextFieldViewConfiguration(
+    @Published var passwordConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignInTextField.passwordTitle,
         placeholder: LocalizedString.SignInTextField.passwordPlaceholder,
         validations: [.nonEmpty],

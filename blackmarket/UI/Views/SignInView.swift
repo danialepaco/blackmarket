@@ -24,10 +24,12 @@ struct SignInView: View {
                         TextFieldView(fieldConfiguration: $viewModel.passwordConfiguration)
                     }
                     .padding(.horizontal, 28.0)
-
-                    StateButton(action: {
-                        viewModel.logIn()
-                    }, title: LocalizedString.SignInScreen.signInButton, isEnabled: viewModel.isValid)
+                    
+                    StateButton(
+                        action: { viewModel.logIn() },
+                        title: LocalizedString.SignInScreen.signInButton,
+                        isEnabled: viewModel.isValid
+                    )
                     .frame(maxHeight: 45)
                     .padding(.horizontal, 28.0)
                     .padding(.bottom, 16.0)
@@ -37,7 +39,7 @@ struct SignInView: View {
                     } label: {
                         Text(LocalizedString.SignInScreen.forgotPasswordButton)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.ui.link)
+                            .foregroundColor(Color.link)
                             .padding(.bottom, 20.0)
                     }
                 }

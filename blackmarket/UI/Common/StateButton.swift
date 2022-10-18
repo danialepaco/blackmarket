@@ -23,14 +23,10 @@ struct StateButton: View {
                     .frame(maxWidth: .infinity, maxHeight: 45)
                     .fontWeight(.bold)
                     .foregroundColor(
-                        isEnabled ?
-                        .init(hex: "ffffff") :
-                        .init(hex: "636363")
+                        isEnabled ? Color.white : Color.disabledGray
                     )
                     .background(
-                        isEnabled ?
-                        Color.init(hex: "00031A") :
-                        Color.init(hex: "E0E0E0")
+                        isEnabled ? Color.black : Color.bone
                     )
             }
             .cornerRadius(8)
@@ -43,8 +39,6 @@ struct StateButton_Previews: PreviewProvider {
     @State static var isEnabled: Bool = false
     
     static var previews: some View {
-        StateButton(action: {
-            
-        }, title: "Button", isEnabled: isEnabled)
+        StateButton(action: {}, title: "Button", isEnabled: isEnabled)
     }
 }
