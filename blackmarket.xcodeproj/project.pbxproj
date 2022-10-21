@@ -28,6 +28,8 @@
 		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
 		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
 		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
+		24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C382901094600D1A2AC /* TabBarView.swift */; };
+		24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C3A29010A0600D1A2AC /* HomeView.swift */; };
 		24B13A8328EB99E3002364E9 /* RSSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8228EB99E3002364E9 /* RSSwiftNetworking */; };
 		24B13A8528EB99E3002364E9 /* RSSwiftNetworkingAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8428EB99E3002364E9 /* RSSwiftNetworkingAlamofire */; };
 		24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */; };
@@ -86,6 +88,8 @@
 		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		24AC5C382901094600D1A2AC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		24AC5C3A29010A0600D1A2AC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadersProvider.swift; sourceTree = "<group>"; };
 		24B13A8B28EB9AD9002364E9 /* APIClient+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIClient+Application.swift"; sourceTree = "<group>"; };
 		24B13A9028EB9AD9002364E9 /* AuthEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 				2475D80328E3CED700630DE5 /* SignInView.swift */,
 				249567C028E771FD00E878A0 /* SignUpView.swift */,
 				249567C428EA599500E878A0 /* ForgotPasswordView.swift */,
+				24AC5C382901094600D1A2AC /* TabBarView.swift */,
+				24AC5C3A29010A0600D1A2AC /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -501,6 +507,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */,
+				24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */,
+				24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */,
 				249567BB28E4F04100E878A0 /* Constants.swift in Sources */,
 				24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */,
 				24B13A9528EB9AD9002364E9 /* APIClient+Application.swift in Sources */,
@@ -676,7 +684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BASE_URL = $BASE_URL;
+				BASE_URL = "https://blackmarket-api.herokuapp.com/api/v1";
 				CODE_SIGN_ENTITLEMENTS = blackmarket/blackmarket.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -716,7 +724,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				BASE_URL = $BASE_URL;
+				BASE_URL = "https://blackmarket-api.herokuapp.com/api/v1";
 				CODE_SIGN_ENTITLEMENTS = blackmarket/blackmarket.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

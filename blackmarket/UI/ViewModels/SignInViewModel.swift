@@ -47,7 +47,7 @@ class SignInViewModel: ObservableObject, Identifiable {
             switch result {
             case .success:
                 break
-            case .failure(let error):
+            case .failure(_):
                 break
             }
         }

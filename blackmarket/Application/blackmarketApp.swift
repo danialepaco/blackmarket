@@ -9,9 +9,19 @@ import SwiftUI
 
 @main
 struct blackmarketApp: App {
+    
+    @State var isAuthenticated = SessionManager.IsAuthenticated()
+
     var body: some Scene {
         WindowGroup {
-            SignInView()
+            Group {
+                isAuthenticated ?
+                                  AnyView(TabBarView()) :
+                                  AnyView(SignInView())
+            }
+            .onReceive(SessionManager.Authenticated, perform: { value in
+                 isAuthenticated = value
+            })
         }
     }
 }

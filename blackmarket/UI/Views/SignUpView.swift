@@ -27,7 +27,7 @@ struct SignUpView: View {
                 .padding(.horizontal, UI.SignUpView.TextFieldsVStack.horizontalPadding)
                 
                 StateButton(
-                    action: { viewModel.logIn() },
+                    action: { viewModel.signUp() },
                     title: LocalizedString.SignUpScreen.signUpButtonTitle,
                     isValid: viewModel.isValid
                 )

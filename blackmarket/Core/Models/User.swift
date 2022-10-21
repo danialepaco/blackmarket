@@ -10,12 +10,20 @@ import Foundation
 
 struct User: Codable {
   var id: Int
-  var username: String
+  var name: String
   var email: String
 
   private enum CodingKeys: String, CodingKey {
     case id
-    case username
+    case name
     case email
+  }
+}
+
+struct UserData: Codable {
+  var data: User
+
+  private enum CodingKeys: String, CodingKey {
+    case data
   }
 }

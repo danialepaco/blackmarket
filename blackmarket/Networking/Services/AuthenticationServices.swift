@@ -35,10 +35,10 @@ internal class AuthenticationServices {
     ) {
         apiClient.request(
             endpoint: AuthEndpoint.signIn(email: email, password: password)
-        ) { [weak self] (result: Result<User?, Error>, responseHeaders: [AnyHashable: Any]) in
+        ) { [weak self] (result: Result<UserData?, Error>, responseHeaders: [AnyHashable: Any]) in
             switch result {
             case .success(let user):
-                if self?.saveUserSession(user, headers: responseHeaders) ?? false {
+                if self?.saveUserSession(user?.data, headers: responseHeaders) ?? false {
                     completion(.success(()))
                 } else {
                     completion(.failure(AuthError.userSessionInvalid))
@@ -53,22 +53,22 @@ internal class AuthenticationServices {
         email: String,
         name: String,
         password: String,
-        completion: @escaping (Result<User, Error>) -> Void
+        completion: @escaping (Result<UserData, Error>) -> Void
     ) {
         let endpoint = AuthEndpoint.signUp(
             email: email,
             name: name,
             password: password
         )
-        
-        apiClient.request(endpoint: endpoint, completion: { [weak self] (result: Result<User?, Error>, responseHeaders: [AnyHashable: Any]) in
+                        
+        apiClient.request(endpoint: endpoint, completion: { [weak self] (result: Result<UserData?, Error>, responseHeaders: [AnyHashable: Any]) in
             switch result {
-            case .success(let user):
+            case .success(let userData):
                 if
-                    let user = user,
-                    self?.saveUserSession(user, headers: responseHeaders) ?? false
+                    let userData = userData,
+                    self?.saveUserSession(userData.data, headers: responseHeaders) ?? false
                 {
-                    completion(.success(user))
+                    completion(.success(userData))
                 } else {
                     completion(.failure(AuthError.userSessionInvalid))
                 }
@@ -85,6 +85,7 @@ internal class AuthenticationServices {
             switch result {
             case .success:
                 UserDataManager.deleteUser()
+                SessionManager.Authenticated.send(false)
                 self?.sessionManager.deleteSession()
                 completion(.success(()))
             case .failure(let error):
@@ -98,8 +99,9 @@ internal class AuthenticationServices {
         headers: [AnyHashable: Any]
     ) -> Bool {
         UserDataManager.currentUser = user
+        SessionManager.Authenticated.send(true)
         sessionManager.currentSession = Session(headers: headers)
         
-        return UserDataManager.currentUser != nil && sessionManager.validSession
+        return UserDataManager.currentUser != nil && sessionManager.validSession && SessionManager.IsAuthenticated()
     }
 }

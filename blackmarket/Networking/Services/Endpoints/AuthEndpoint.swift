@@ -43,10 +43,10 @@ internal enum AuthEndpoint: RailsAPIEndpoint {
                 ]
             ]
         case .signUp(let email, let name, let password):
-            var parameters = [
+            let parameters = [
                 "email": email,
-                "name": name,
-                "password": password
+                "password": password,
+                "name": name
             ]
             return ["user": parameters]
         default:
