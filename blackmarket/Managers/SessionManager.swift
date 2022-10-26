@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import Combine
 
 internal class SessionManager: CurrentUserSessionProvider {
@@ -17,6 +16,8 @@ internal class SessionManager: CurrentUserSessionProvider {
     static func IsAuthenticated() -> Bool {
         return SessionManager.shared.validSession
     }
+    
+    static let SESSIONKEY = "ios-base-session"
     
     static let shared = SessionManager()
     
@@ -29,7 +30,7 @@ internal class SessionManager: CurrentUserSessionProvider {
     var currentSession: Session? {
         get {
             if
-                let data = userDefaults.data(forKey: "ios-base-session"),
+                let data = userDefaults.data(forKey: SessionManager.SESSIONKEY),
                 let session = try? JSONDecoder().decode(Session.self, from: data)
             {
                 return session
@@ -39,18 +40,18 @@ internal class SessionManager: CurrentUserSessionProvider {
         
         set {
             let session = try? JSONEncoder().encode(newValue)
-            userDefaults.set(session, forKey: "ios-base-session")
+            userDefaults.set(session, forKey: SessionManager.SESSIONKEY)
         }
     }
     
     func deleteSession() {
-        userDefaults.removeObject(forKey: "ios-base-session")
+        userDefaults.removeObject(forKey: SessionManager.SESSIONKEY)
     }
     
     var validSession: Bool {
         if let session = currentSession, let uid = session.uid,
-           let tkn = session.accessToken, let client = session.client {
-            return !uid.isEmpty && !tkn.isEmpty && !client.isEmpty
+           let token = session.accessToken, let client = session.client {
+            return !uid.isEmpty && !token.isEmpty && !client.isEmpty
         }
         return false
     }

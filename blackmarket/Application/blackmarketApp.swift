@@ -10,14 +10,12 @@ import SwiftUI
 @main
 struct blackmarketApp: App {
     
-    @State var isAuthenticated = SessionManager.IsAuthenticated()
+    @State var isAuthenticated = SessionManager.shared.validSession
 
     var body: some Scene {
         WindowGroup {
             Group {
-                isAuthenticated ?
-                                  AnyView(TabBarView()) :
-                                  AnyView(SignInView())
+                isAuthenticated ? AnyView(TabBarView()) : AnyView(SignInView())
             }
             .onReceive(SessionManager.Authenticated, perform: { value in
                  isAuthenticated = value

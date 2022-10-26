@@ -33,23 +33,16 @@ class SignInViewModel: ObservableObject, Identifiable {
             }.eraseToAnyPublisher()
     }
     
-    init(
-        authServices: AuthenticationServices = AuthenticationServices()
-    ) {
+    init(authServices: AuthenticationServices = AuthenticationServices()) {
         self.authServices = authServices
     }
     
-    func logIn() {
-        authServices.login(
-            email: emailConfiguration.value,
-            password: passwordConfiguration.value
-        ) { result in
-            switch result {
-            case .success:
-                break
-            case .failure(_):
-                break
-            }
+    func logIn() async {
+        do {
+            _ = try await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
+        } catch {
+            //TODO: handle errors
+            print("Login error:\(error)")
         }
     }
 }

@@ -15,82 +15,80 @@ internal class AuthenticationServices {
     }
     
     // MARK: - Properties
-        
-    private let sessionManager: SessionManager
     
-    private let apiClient: APIClient
+    private let sessionManager: SessionManager
+    private let userDataManager: UserDataManager
+    
+    private let apiClient: Client
     
     init(
         sessionManager: SessionManager = .shared,
-        apiClient: APIClient = Client.shared
+        userDataManager: UserDataManager = .shared,
+        apiClient: Client = .shared
     ) {
         self.sessionManager = sessionManager
+        self.userDataManager = userDataManager
         self.apiClient = apiClient
     }
     
     func login(
         email: String,
-        password: String,
-        completion: @escaping (Result<Void, Error>) -> Void
-    ) {
-        apiClient.request(
+        password: String
+    ) async throws -> Error? {
+        let response: Response<User> = try await apiClient.request(
             endpoint: AuthEndpoint.signIn(email: email, password: password)
-        ) { [weak self] (result: Result<UserData?, Error>, responseHeaders: [AnyHashable: Any]) in
-            switch result {
-            case .success(let user):
-                if self?.saveUserSession(user?.data, headers: responseHeaders) ?? false {
-                    completion(.success(()))
-                } else {
-                    completion(.failure(AuthError.userSessionInvalid))
-                }
-            case .failure(let error):
-                completion(.failure(error))
+        )
+        switch response.result {
+        case .success(let user):
+            guard self.saveUserSession(user, headers: response.header) else {
+                return AuthError.userSessionInvalid
             }
+            return nil
+        case .failure(let error):
+            return error
         }
     }
     
     func signup(
         email: String,
         name: String,
-        password: String,
-        completion: @escaping (Result<UserData, Error>) -> Void
-    ) {
-        let endpoint = AuthEndpoint.signUp(
-            email: email,
-            name: name,
-            password: password
+        password: String
+    ) async throws -> Result<User, Error> {
+        
+        let response: Response<User> = try await apiClient.request(
+            endpoint: AuthEndpoint.signUp(
+                email: email,
+                name: name,
+                password: password
+            )
         )
-                        
-        apiClient.request(endpoint: endpoint, completion: { [weak self] (result: Result<UserData?, Error>, responseHeaders: [AnyHashable: Any]) in
-            switch result {
-            case .success(let userData):
-                if
-                    let userData = userData,
-                    self?.saveUserSession(userData.data, headers: responseHeaders) ?? false
-                {
-                    completion(.success(userData))
-                } else {
-                    completion(.failure(AuthError.userSessionInvalid))
-                }
-            case .failure(let error):
-                completion(.failure(error))
+        
+        switch response.result {
+        case .success(let user):
+            if
+                let user = user,
+                self.saveUserSession(user, headers: response.header)
+            {
+                return .success(user)
+            } else {
+                return .failure(AuthError.userSessionInvalid)
             }
-        })
+        case .failure(let error):
+            return .failure(error)
+        }
     }
     
-    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
-        apiClient.request(
+    func logout() async throws -> Error? {
+        let response: Response<Network.EmptyResponse> = try await apiClient.request(
             endpoint: AuthEndpoint.logout
-        ) { [weak self] (result: Result<Network.EmptyResponse?, Error>, _) in
-            switch result {
-            case .success:
-                UserDataManager.deleteUser()
-                SessionManager.Authenticated.send(false)
-                self?.sessionManager.deleteSession()
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        )
+        switch response.result {
+        case .success:
+            self.userDataManager.deleteUser()
+            self.sessionManager.deleteSession()
+            return nil
+        case .failure(let error):
+            return error
         }
     }
     
@@ -98,10 +96,10 @@ internal class AuthenticationServices {
         _ user: User?,
         headers: [AnyHashable: Any]
     ) -> Bool {
-        UserDataManager.currentUser = user
+        userDataManager.currentUser = user
         SessionManager.Authenticated.send(true)
         sessionManager.currentSession = Session(headers: headers)
         
-        return UserDataManager.currentUser != nil && sessionManager.validSession && SessionManager.IsAuthenticated()
+        return userDataManager.currentUser != nil && sessionManager.validSession && SessionManager.IsAuthenticated()
     }
 }
