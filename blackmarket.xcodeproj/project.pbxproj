@@ -42,7 +42,6 @@
 		24B13AA828EB9B74002364E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AA528EB9B74002364E9 /* User.swift */; };
 		24B13AAA28EB9FA3002364E9 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AA928EB9FA3002364E9 /* Dictionary.swift */; };
 		24B13AAD28EBA029002364E9 /* JSONEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AAC28EBA029002364E9 /* JSONEncoding.swift */; };
-		24B13AAF28EBA08B002364E9 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B13AAE28EBA08B002364E9 /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +99,6 @@
 		24B13AA528EB9B74002364E9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		24B13AA928EB9FA3002364E9 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		24B13AAC28EBA029002364E9 /* JSONEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoding.swift; sourceTree = "<group>"; };
-		24B13AAE28EBA08B002364E9 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		24B13AB028EBAA06002364E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -363,7 +361,6 @@
 			children = (
 				24B13AA328EB9B74002364E9 /* Session.swift */,
 				24B13AA528EB9B74002364E9 /* User.swift */,
-				24B13AAE28EBA08B002364E9 /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -512,7 +509,6 @@
 				249567BB28E4F04100E878A0 /* Constants.swift in Sources */,
 				24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */,
 				24B13A9528EB9AD9002364E9 /* APIClient+Application.swift in Sources */,
-				24B13AAF28EBA08B002364E9 /* AppError.swift in Sources */,
 				249567B928E4EFFE00E878A0 /* TextFieldStyles.swift in Sources */,
 				24B13AAD28EBA029002364E9 /* JSONEncoding.swift in Sources */,
 				2475D80428E3CED700630DE5 /* SignInView.swift in Sources */,

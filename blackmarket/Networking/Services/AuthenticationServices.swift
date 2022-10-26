@@ -34,18 +34,22 @@ internal class AuthenticationServices {
     func login(
         email: String,
         password: String
-    ) async throws -> Error? {
+    ) async throws -> Result<User, Error> {
         let response: Response<User> = try await apiClient.request(
             endpoint: AuthEndpoint.signIn(email: email, password: password)
         )
         switch response.result {
         case .success(let user):
-            guard self.saveUserSession(user, headers: response.header) else {
-                return AuthError.userSessionInvalid
+            if
+                let user = user,
+                self.saveUserSession(user, headers: response.header)
+            {
+                return .success(user)
+            } else {
+                return .failure(AuthError.userSessionInvalid)
             }
-            return nil
-        case .failure(let error):
-            return error
+        case .failure:
+            return .failure(AuthError.userSessionInvalid)
         }
     }
     
@@ -78,17 +82,17 @@ internal class AuthenticationServices {
         }
     }
     
-    func logout() async throws -> Error? {
+    func logout() async throws -> Result<Bool, Error> {
         let response: Response<Network.EmptyResponse> = try await apiClient.request(
             endpoint: AuthEndpoint.logout
         )
         switch response.result {
         case .success:
-            self.userDataManager.deleteUser()
-            self.sessionManager.deleteSession()
-            return nil
-        case .failure(let error):
-            return error
+            userDataManager.deleteUser()
+            sessionManager.deleteSession()
+            return .success(true)
+        case .failure:
+            return .failure(AuthError.userSessionInvalid)
         }
     }
     

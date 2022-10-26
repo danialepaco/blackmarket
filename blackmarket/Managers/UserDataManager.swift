@@ -38,4 +38,5 @@ class UserDataManager: NSObject {
     
     var isUserLogged: Bool {
         currentUser != nil
-    }}
+    }
+}
