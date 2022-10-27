@@ -39,7 +39,7 @@ class SignInViewModel: ObservableObject, Identifiable {
     
     func logIn() async {
         do {
-            _ = try await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
+            try await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
         } catch {
             //TODO: handle errors
             print("Login error:\(error)")

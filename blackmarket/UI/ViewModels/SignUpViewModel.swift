@@ -85,7 +85,7 @@ class SignUpViewModel: ObservableObject, Identifiable {
     
     func signUp() async {
         do {
-            _ = try await authServices.signup(email: emailConfiguration.value,name: nameConfiguration.value, password: passwordConfiguration.value)
+            try await authServices.signup(email: emailConfiguration.value,name: nameConfiguration.value, password: passwordConfiguration.value)
         } catch {
             //TODO: handle errors
             print("Signup error:\(error)")

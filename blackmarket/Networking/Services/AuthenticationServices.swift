@@ -38,7 +38,7 @@ internal class AuthenticationServices {
     @discardableResult func login(
         email: String,
         password: String
-    ) async throws -> Result<UserData, AuthError> {
+    ) async -> Result<UserData, AuthError> {
         do {
             let response: Response<UserData> = try await apiClient.request(
                 endpoint: AuthEndpoint.signIn(email: email, password: password)
@@ -65,7 +65,7 @@ internal class AuthenticationServices {
         email: String,
         name: String,
         password: String
-    ) async throws -> Result<UserData, AuthError> {
+    ) async -> Result<UserData, AuthError> {
         do {
             let response: Response<UserData> = try await apiClient.request(
                 endpoint: AuthEndpoint.signUp(
@@ -93,7 +93,7 @@ internal class AuthenticationServices {
         }
     }
     
-    @discardableResult func logout() async throws -> Result<Bool, Error> {
+    @discardableResult func logout() async -> Result<Bool, Error> {
         do {
             let response: Response<Network.EmptyResponse> = try await apiClient.request(
                 endpoint: AuthEndpoint.logout
