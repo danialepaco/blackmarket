@@ -36,9 +36,7 @@ struct StateButton: View {
 
 struct StateButton_Previews: PreviewProvider {
     
-    @State static var isEnabled: Bool = false
-    
     static var previews: some View {
-        StateButton(action: {}, title: "Button", isEnabled: isEnabled)
+        StateButton(action: {}, title: "Button", isEnabled: false)
     }
 }

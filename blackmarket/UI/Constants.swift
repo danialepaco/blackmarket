@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UI {
+enum UI {
   enum Defaults {
     static let margin: CGFloat = 20
   }

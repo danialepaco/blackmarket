@@ -5,14 +5,11 @@
 //  Created by Leandro Higa on 31/08/2022.
 //
 
-import Foundation
+import Combine
 
 final class TextFieldViewConfiguration: ObservableObject {
-    var value: String = "" {
-        didSet {
-            validate()
-        }
-    }
+        
+    @Published var value: String = ""
     
     var validations: [ValidationType]
     var errorMessage: String
@@ -21,6 +18,7 @@ final class TextFieldViewConfiguration: ObservableObject {
     var isSecure = false
     
     private(set) var isValid = true
+    private var subscribers = Set<AnyCancellable>()
     
     var isEmpty: Bool {
         return value.isEmpty
@@ -44,8 +42,11 @@ final class TextFieldViewConfiguration: ObservableObject {
         self.validations = validations
         self.errorMessage = errorMessage
         self.isSecure = isSecure
-        
-        validate()
+                
+        $value.sink { value in
+            self.validate()
+        }
+        .store(in: &subscribers)
     }
     
     func validate() {

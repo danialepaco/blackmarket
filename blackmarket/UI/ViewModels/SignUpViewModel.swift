@@ -64,18 +64,13 @@ class SignUpViewModel: ObservableObject, Identifiable {
     }()
     
     lazy var alreadyHaveAnAccountString: AttributedString = {
-        do {
-            var text = try AttributedString(markdown: LocalizedString.SignUpView.alreadyHaveAnAccountLabel)
-            
-            if let range = text.range(of: LocalizedString.SignUpView.alreadyHaveAnAccountLogInLabel) {
-                text[range].font = .subheadline.bold()
-                text[range].foregroundColor = Color.link
-            }
-            
-            return text
-        } catch {
-            return AttributedString(stringLiteral: "error".localized)
+        var text = AttributedString(LocalizedString.SignUpView.alreadyHaveAnAccountLabel)
+        
+        if let range = text.range(of: LocalizedString.SignUpView.alreadyHaveAnAccountLogInLabel) {
+            text[range].font = .subheadline.bold()
+            text[range].foregroundColor = Color.link
         }
+        return text
     }()
     
     func logIn() {
