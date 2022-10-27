@@ -8,14 +8,13 @@
 
 import UIKit
 import Combine
+import SwiftUI
 
 internal class SessionManager: CurrentUserSessionProvider {
     
-    static let Authenticated = PassthroughSubject<Bool, Never>()
+    @Published var isSessionValid = false
     
-    static func IsAuthenticated() -> Bool {
-        return SessionManager.shared.validSession
-    }
+    var subscriptions = Set<AnyCancellable>()
     
     static let SESSIONKEY = "ios-base-session"
     
@@ -25,6 +24,16 @@ internal class SessionManager: CurrentUserSessionProvider {
     
     init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
+        userDefaults
+            .publisher(for: \.currentSession)
+            .handleEvents(receiveOutput: { [weak self] currentSession in
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    self.isSessionValid = self.validSession(session: currentSession)
+                }
+            })
+            .sink { _ in }
+            .store(in: &subscriptions)
     }
     
     var currentSession: Session? {
@@ -39,8 +48,7 @@ internal class SessionManager: CurrentUserSessionProvider {
         }
         
         set {
-            let session = try? JSONEncoder().encode(newValue)
-            userDefaults.set(session, forKey: SessionManager.SESSIONKEY)
+            userDefaults.currentSession = newValue
         }
     }
     
@@ -48,11 +56,30 @@ internal class SessionManager: CurrentUserSessionProvider {
         userDefaults.removeObject(forKey: SessionManager.SESSIONKEY)
     }
     
-    var validSession: Bool {
-        if let session = currentSession, let uid = session.uid,
-           let token = session.accessToken, let client = session.client {
-            return !uid.isEmpty && !token.isEmpty && !client.isEmpty
+    func validSession(session: Session?) -> Bool {
+        guard let session = session, let uid = session.uid,
+              let token = session.accessToken, let client = session.client else {
+            return false
         }
-        return false
+        return !uid.isEmpty && !token.isEmpty && !client.isEmpty
+    }
+}
+
+
+extension UserDefaults {
+    @objc dynamic var currentSession: Session? {
+        get {
+            if
+                let data = data(forKey: SessionManager.SESSIONKEY),
+                let session = try? JSONDecoder().decode(Session.self, from: data)
+            {
+                return session
+            }
+            return nil
+        }
+        set {
+            let session = try? JSONEncoder().encode(newValue)
+            set(session, forKey: SessionManager.SESSIONKEY)
+        }
     }
 }

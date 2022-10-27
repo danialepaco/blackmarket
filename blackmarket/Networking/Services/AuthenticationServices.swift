@@ -34,15 +34,15 @@ internal class AuthenticationServices {
     func login(
         email: String,
         password: String
-    ) async throws -> Result<User, Error> {
-        let response: Response<User> = try await apiClient.request(
+    ) async throws -> Result<UserData, Error> {
+        let response: Response<UserData> = try await apiClient.request(
             endpoint: AuthEndpoint.signIn(email: email, password: password)
         )
         switch response.result {
         case .success(let user):
             if
                 let user = user,
-                self.saveUserSession(user, headers: response.header)
+                self.saveUserSession(user.data, headers: response.header)
             {
                 return .success(user)
             } else {
@@ -57,9 +57,9 @@ internal class AuthenticationServices {
         email: String,
         name: String,
         password: String
-    ) async throws -> Result<User, Error> {
+    ) async throws -> Result<UserData, Error> {
         
-        let response: Response<User> = try await apiClient.request(
+        let response: Response<UserData> = try await apiClient.request(
             endpoint: AuthEndpoint.signUp(
                 email: email,
                 name: name,
@@ -71,7 +71,7 @@ internal class AuthenticationServices {
         case .success(let user):
             if
                 let user = user,
-                self.saveUserSession(user, headers: response.header)
+                self.saveUserSession(user.data, headers: response.header)
             {
                 return .success(user)
             } else {
@@ -101,9 +101,8 @@ internal class AuthenticationServices {
         headers: [AnyHashable: Any]
     ) -> Bool {
         userDataManager.currentUser = user
-        SessionManager.Authenticated.send(true)
         sessionManager.currentSession = Session(headers: headers)
         
-        return userDataManager.currentUser != nil && sessionManager.validSession && SessionManager.IsAuthenticated()
+        return userDataManager.currentUser != nil && sessionManager.isSessionValid
     }
 }
