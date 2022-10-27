@@ -12,39 +12,28 @@ import SwiftUI
 
 internal class SessionManager: CurrentUserSessionProvider {
     
-    @Published var isSessionValid = false
+    var isSessionValidPublisher: AnyPublisher<Bool, Never> {
+        currentSessionPublisher.map { $0?.isValid ?? false }.eraseToAnyPublisher()
+    }
+
+    private var currentSessionPublisher: AnyPublisher<Session?, Never> {
+        userDefaults.publisher(for: \.currentSession).eraseToAnyPublisher()
+    }
     
-    var subscriptions = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
+    private let userDefaults: UserDefaults
     
     static let SESSIONKEY = "ios-base-session"
     
     static let shared = SessionManager()
-    
-    private let userDefaults: UserDefaults
-    
+        
     init(userDefaults: UserDefaults = .standard) {
         self.userDefaults = userDefaults
-        userDefaults
-            .publisher(for: \.currentSession)
-            .handleEvents(receiveOutput: { [weak self] currentSession in
-                DispatchQueue.main.async {
-                    guard let self = self else { return }
-                    self.isSessionValid = self.validSession(session: currentSession)
-                }
-            })
-            .sink { _ in }
-            .store(in: &subscriptions)
     }
     
-    var currentSession: Session? {
+    private(set) var currentSession: Session? {
         get {
-            if
-                let data = userDefaults.data(forKey: SessionManager.SESSIONKEY),
-                let session = try? JSONDecoder().decode(Session.self, from: data)
-            {
-                return session
-            }
-            return nil
+            userDefaults.currentSession
         }
         
         set {
@@ -56,17 +45,12 @@ internal class SessionManager: CurrentUserSessionProvider {
         userDefaults.removeObject(forKey: SessionManager.SESSIONKEY)
     }
     
-    func validSession(session: Session?) -> Bool {
-        guard let session = session, let uid = session.uid,
-              let token = session.accessToken, let client = session.client else {
-            return false
-        }
-        return !uid.isEmpty && !token.isEmpty && !client.isEmpty
+    func saveUser(session: Session) {
+        userDefaults.currentSession = session
     }
 }
 
-
-extension UserDefaults {
+fileprivate extension UserDefaults {
     @objc dynamic var currentSession: Session? {
         get {
             if

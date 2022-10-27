@@ -11,7 +11,11 @@ import RSSwiftNetworking
 internal class AuthenticationServices {
     
     enum AuthError: Error {
-        case userSessionInvalid
+        case loginError
+        case signUpError
+        case logoutError
+        case mapingError
+        case error
     }
     
     // MARK: - Properties
@@ -31,68 +35,79 @@ internal class AuthenticationServices {
         self.apiClient = apiClient
     }
     
-    func login(
+    @discardableResult func login(
         email: String,
         password: String
-    ) async throws -> Result<UserData, Error> {
-        let response: Response<UserData> = try await apiClient.request(
-            endpoint: AuthEndpoint.signIn(email: email, password: password)
-        )
-        switch response.result {
-        case .success(let user):
-            if
-                let user = user,
-                self.saveUserSession(user.data, headers: response.header)
-            {
-                return .success(user)
-            } else {
-                return .failure(AuthError.userSessionInvalid)
+    ) async throws -> Result<UserData, AuthError> {
+        do {
+            let response: Response<UserData> = try await apiClient.request(
+                endpoint: AuthEndpoint.signIn(email: email, password: password)
+            )
+            switch response.result {
+            case .success(let user):
+                if
+                    let user = user,
+                    self.saveUserSession(user.data, headers: response.header)
+                {
+                    return .success(user)
+                } else {
+                    return .failure(AuthError.mapingError)
+                }
+            case .failure:
+                return .failure(AuthError.loginError)
             }
-        case .failure:
-            return .failure(AuthError.userSessionInvalid)
+        } catch {
+            return .failure(AuthError.error)
         }
     }
     
-    func signup(
+    @discardableResult func signup(
         email: String,
         name: String,
         password: String
-    ) async throws -> Result<UserData, Error> {
-        
-        let response: Response<UserData> = try await apiClient.request(
-            endpoint: AuthEndpoint.signUp(
-                email: email,
-                name: name,
-                password: password
+    ) async throws -> Result<UserData, AuthError> {
+        do {
+            let response: Response<UserData> = try await apiClient.request(
+                endpoint: AuthEndpoint.signUp(
+                    email: email,
+                    name: name,
+                    password: password
+                )
             )
-        )
-        
-        switch response.result {
-        case .success(let user):
-            if
-                let user = user,
-                self.saveUserSession(user.data, headers: response.header)
-            {
-                return .success(user)
-            } else {
-                return .failure(AuthError.userSessionInvalid)
+            
+            switch response.result {
+            case .success(let user):
+                if
+                    let user = user,
+                    self.saveUserSession(user.data, headers: response.header)
+                {
+                    return .success(user)
+                } else {
+                    return .failure(AuthError.mapingError)
+                }
+            case .failure:
+                return .failure(AuthError.signUpError)
             }
-        case .failure(let error):
-            return .failure(error)
+        } catch {
+            return .failure(AuthError.error)
         }
     }
     
-    func logout() async throws -> Result<Bool, Error> {
-        let response: Response<Network.EmptyResponse> = try await apiClient.request(
-            endpoint: AuthEndpoint.logout
-        )
-        switch response.result {
-        case .success:
-            userDataManager.deleteUser()
-            sessionManager.deleteSession()
-            return .success(true)
-        case .failure:
-            return .failure(AuthError.userSessionInvalid)
+    @discardableResult func logout() async throws -> Result<Bool, Error> {
+        do {
+            let response: Response<Network.EmptyResponse> = try await apiClient.request(
+                endpoint: AuthEndpoint.logout
+            )
+            switch response.result {
+            case .success:
+                userDataManager.deleteUser()
+                sessionManager.deleteSession()
+                return .success(true)
+            case .failure:
+                return .failure(AuthError.logoutError)
+            }
+        } catch {
+            return .failure(AuthError.error)
         }
     }
     
@@ -101,8 +116,9 @@ internal class AuthenticationServices {
         headers: [AnyHashable: Any]
     ) -> Bool {
         userDataManager.currentUser = user
-        sessionManager.currentSession = Session(headers: headers)
+        guard let session = Session(headers: headers) else { return false }
+        sessionManager.saveUser(session: session)
         
-        return userDataManager.currentUser != nil && sessionManager.isSessionValid
+        return userDataManager.currentUser != nil && sessionManager.currentSession?.isValid ?? false
     }
 }

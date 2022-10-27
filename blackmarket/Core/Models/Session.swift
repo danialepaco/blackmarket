@@ -23,6 +23,18 @@ class Session: NSObject, Codable {
         case expiry
     }
     
+    var isValid: Bool {
+        guard
+            let uid = uid,
+            let token = accessToken,
+            let client = client
+        else {
+            return false
+        }
+        
+        return !uid.isEmpty && !token.isEmpty && !client.isEmpty
+    }
+    
     init(
         uid: String? = nil, client: String? = nil,
         token: String? = nil, expires: Date? = nil
