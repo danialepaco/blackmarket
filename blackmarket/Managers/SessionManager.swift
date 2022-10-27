@@ -46,7 +46,9 @@ internal class SessionManager: CurrentUserSessionProvider {
     }
     
     func saveUser(session: Session) {
-        userDefaults.currentSession = session
+        DispatchQueue.main.async {
+            self.userDefaults.currentSession = session
+        }
     }
 }
 
