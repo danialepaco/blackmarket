@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct StateButton: View {
     let action: () -> ()
     let title: String
-    var isEnabled: Bool
+    @State private var isEnabled: Bool = false
+    let isValid: AnyPublisher<Bool, Never>
 
     var body: some View {
             Button(action: {
@@ -31,12 +33,16 @@ struct StateButton: View {
             }
             .cornerRadius(8)
             .disabled(!isEnabled)
+            .onReceive(isValid) { isValid in
+                isEnabled = isValid
+            }
     }
 }
 
 struct StateButton_Previews: PreviewProvider {
-    
     static var previews: some View {
-        StateButton(action: {}, title: "Button", isEnabled: false)
+        let subject = CurrentValueSubject<Bool, Never>(false)
+        let isValid: AnyPublisher<Bool, Never> = subject.eraseToAnyPublisher()
+        StateButton(action: {}, title: "Button", isValid: isValid)
     }
 }

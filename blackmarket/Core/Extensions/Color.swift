@@ -9,9 +9,7 @@ import SwiftUI
 
 extension Color {
     static let link = Color("link")
-    static let white = Color.white
     static let disabledGray = Color("disabledGray")
-    static let black = Color("black")
     static let bone = Color("bone")
 }
 

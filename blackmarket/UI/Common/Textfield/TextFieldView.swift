@@ -10,6 +10,7 @@ import SwiftUI
 struct TextFieldView: View {
     
     @Binding var fieldConfiguration: TextFieldViewConfiguration
+    @State var shouldShowError = false
     
     var body: some View {
         VStack {
@@ -47,7 +48,7 @@ struct TextFieldView: View {
             
             Rectangle()
                 .frame(maxWidth: .infinity, maxHeight: UI.TextFieldView.rectangleHeight)
-                .foregroundColor(fieldConfiguration.shouldShowError ? .red : .black)
+                .foregroundColor(shouldShowError ? .red : .black)
                 .opacity(
                     fieldConfiguration.isEmpty
                     ? UI.TextFieldView.rectangleOpacityEmpty
@@ -59,10 +60,13 @@ struct TextFieldView: View {
                 .font(.footnote)
                 .foregroundColor(.red)
                 .opacity(
-                    fieldConfiguration.shouldShowError ? UI.TextFieldView.errorTextOpacityError : .zero
+                    shouldShowError ? UI.TextFieldView.errorTextOpacityError : .zero
                 )
                 .animation(.easeOut(duration: UI.TextFieldView.textAnimationDuration),
                            value: fieldConfiguration.value)
+        }
+        .onReceive(fieldConfiguration.shouldShowError) { value in
+            shouldShowError = value
         }
     }
 }

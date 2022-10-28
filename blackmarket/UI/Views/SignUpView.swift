@@ -29,7 +29,7 @@ struct SignUpView: View {
                 StateButton(
                     action: { viewModel.logIn() },
                     title: LocalizedString.SignUpScreen.signUpButtonTitle,
-                    isEnabled: viewModel.isValid
+                    isValid: viewModel.isValid
                 )
                 .frame(maxHeight: 45)
                 .padding(.horizontal, 28.0)

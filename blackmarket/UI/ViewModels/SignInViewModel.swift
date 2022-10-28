@@ -5,7 +5,7 @@
 //  Created by Daniel Parra on 9/28/22.
 //
 
-import Foundation
+import Combine
 
 class SignInViewModel: ObservableObject, Identifiable {
     
@@ -24,8 +24,11 @@ class SignInViewModel: ObservableObject, Identifiable {
         errorMessage: LocalizedString.SignInTextField.passwordError
     )
         
-    var isValid: Bool {
-        return [emailConfiguration, passwordConfiguration].allSatisfy { $0.isValid }
+    var isValid: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
+            .map { emailIsValid, passwordIsValid in
+            emailIsValid && passwordIsValid
+            }.eraseToAnyPublisher()
     }
         
     func logIn() {

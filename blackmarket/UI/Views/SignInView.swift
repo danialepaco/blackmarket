@@ -10,7 +10,7 @@ import SwiftUI
 struct SignInView: View {
     
     @ObservedObject var viewModel = SignInViewModel()
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 16.0) {
@@ -28,7 +28,7 @@ struct SignInView: View {
                     StateButton(
                         action: { viewModel.logIn() },
                         title: LocalizedString.SignInScreen.signInButton,
-                        isEnabled: viewModel.isValid
+                        isValid: viewModel.isValid
                     )
                     .frame(maxHeight: 45)
                     .padding(.horizontal, 28.0)

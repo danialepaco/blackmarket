@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class SignUpViewModel: ObservableObject, Identifiable {
     
@@ -35,8 +36,11 @@ class SignUpViewModel: ObservableObject, Identifiable {
         errorMessage: LocalizedString.SignUpTextField.passwordError
     )
     
-    var isValid: Bool {
-        return [emailConfiguration, passwordConfiguration].allSatisfy { $0.isValid }
+    var isValid: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
+            .map { emailIsValid, passwordIsValid in
+                emailIsValid && passwordIsValid
+            }.eraseToAnyPublisher()
     }
     
     lazy var disclaimerString: AttributedString = {

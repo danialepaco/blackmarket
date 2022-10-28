@@ -10,22 +10,31 @@ import Combine
 final class TextFieldViewConfiguration: ObservableObject {
         
     @Published var value: String = ""
+        
+    var shouldShowError: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(isValid, Just(isEmpty))
+            .map { isValid, isEmpty in
+                !isValid && !isEmpty
+            }.eraseToAnyPublisher()
+    }
     
-    var validations: [ValidationType]
+    var isValid: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest($value, Just(validations))
+            .map { value, validations in
+                validations.allSatisfy { validation in
+                    value.validates([validation])
+                }
+            }.eraseToAnyPublisher()
+    }
+        
+    private (set )var validations: [ValidationType]
     var errorMessage: String
     var title: String
     var placeholder: String
     var isSecure = false
     
-    private(set) var isValid = true
-    private var subscribers = Set<AnyCancellable>()
-    
     var isEmpty: Bool {
         return value.isEmpty
-    }
-    
-    var shouldShowError: Bool {
-        !isEmpty && !isValid
     }
     
     init(
@@ -42,14 +51,5 @@ final class TextFieldViewConfiguration: ObservableObject {
         self.validations = validations
         self.errorMessage = errorMessage
         self.isSecure = isSecure
-                
-        $value.sink { value in
-            self.validate()
-        }
-        .store(in: &subscribers)
-    }
-    
-    func validate() {
-        isValid = value.validates(validations)
     }
 }
