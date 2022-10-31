@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D80128E3CED700630DE5 /* blackmarketApp.swift */; };
-		2475D80428E3CED700630DE5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D80328E3CED700630DE5 /* ContentView.swift */; };
+		2475D80428E3CED700630DE5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D80328E3CED700630DE5 /* SignInView.swift */; };
 		2475D80628E3CED800630DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2475D80528E3CED800630DE5 /* Assets.xcassets */; };
 		2475D80A28E3CED800630DE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2475D80928E3CED800630DE5 /* Preview Assets.xcassets */; };
 		2475D81428E3CED800630DE5 /* blackmarketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D81328E3CED800630DE5 /* blackmarketTests.swift */; };
 		2475D81E28E3CED800630DE5 /* blackmarketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D81D28E3CED800630DE5 /* blackmarketUITests.swift */; };
 		2475D82028E3CED800630DE5 /* blackmarketUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D81F28E3CED800630DE5 /* blackmarketUITestsLaunchTests.swift */; };
+		2475D82D28E4DABE00630DE5 /* StateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475D82C28E4DABE00630DE5 /* StateButton.swift */; };
+		249567A028E4E74E00E878A0 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2495679F28E4E74E00E878A0 /* Color.swift */; };
+		249567A328E4E96D00E878A0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567A228E4E96D00E878A0 /* String.swift */; };
+		249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567A528E4E9A900E878A0 /* Validatable+String.swift */; };
+		249567A928E4EEF700E878A0 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567A828E4EEF700E878A0 /* LocalizedString.swift */; };
+		249567AC28E4EF2B00E878A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 249567AB28E4EF2B00E878A0 /* Localizable.strings */; };
+		249567B528E4EFC800E878A0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567B328E4EFC800E878A0 /* TextFieldView.swift */; };
+		249567B628E4EFC800E878A0 /* TextFieldViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567B428E4EFC800E878A0 /* TextFieldViewConfiguration.swift */; };
+		249567B928E4EFFE00E878A0 /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567B828E4EFFE00E878A0 /* TextFieldStyles.swift */; };
+		249567BB28E4F04100E878A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567BA28E4F04100E878A0 /* Constants.swift */; };
+		249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567BE28E4FE5600E878A0 /* SignInViewModel.swift */; };
+		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
+		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
+		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +50,7 @@
 /* Begin PBXFileReference section */
 		2475D7FE28E3CED700630DE5 /* blackmarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blackmarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2475D80128E3CED700630DE5 /* blackmarketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blackmarketApp.swift; sourceTree = "<group>"; };
-		2475D80328E3CED700630DE5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2475D80328E3CED700630DE5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2475D80528E3CED800630DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2475D80728E3CED800630DE5 /* blackmarket.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blackmarket.entitlements; sourceTree = "<group>"; };
 		2475D80928E3CED800630DE5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +59,20 @@
 		2475D81928E3CED800630DE5 /* blackmarketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blackmarketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2475D81D28E3CED800630DE5 /* blackmarketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blackmarketUITests.swift; sourceTree = "<group>"; };
 		2475D81F28E3CED800630DE5 /* blackmarketUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blackmarketUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2475D82C28E4DABE00630DE5 /* StateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateButton.swift; sourceTree = "<group>"; };
+		2495679F28E4E74E00E878A0 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		249567A228E4E96D00E878A0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		249567A528E4E9A900E878A0 /* Validatable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Validatable+String.swift"; sourceTree = "<group>"; };
+		249567A828E4EEF700E878A0 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
+		249567AB28E4EF2B00E878A0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		249567B328E4EFC800E878A0 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		249567B428E4EFC800E878A0 /* TextFieldViewConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldViewConfiguration.swift; sourceTree = "<group>"; };
+		249567B828E4EFFE00E878A0 /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
+		249567BA28E4F04100E878A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		249567BE28E4FE5600E878A0 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +123,11 @@
 		2475D80028E3CED700630DE5 /* blackmarket */ = {
 			isa = PBXGroup;
 			children = (
-				2475D80128E3CED700630DE5 /* blackmarketApp.swift */,
-				2475D80328E3CED700630DE5 /* ContentView.swift */,
-				2475D80528E3CED800630DE5 /* Assets.xcassets */,
 				2475D80728E3CED800630DE5 /* blackmarket.entitlements */,
+				249567A728E4E9BE00E878A0 /* Application */,
+				249567AD28E4EF4B00E878A0 /* Core */,
+				249567AE28E4EF7700E878A0 /* UI */,
+				249567AA28E4EF0A00E878A0 /* Resources */,
 				2475D80828E3CED800630DE5 /* Preview Content */,
 			);
 			path = blackmarket;
@@ -127,6 +156,107 @@
 				2475D81F28E3CED800630DE5 /* blackmarketUITestsLaunchTests.swift */,
 			);
 			path = blackmarketUITests;
+			sourceTree = "<group>";
+		};
+		249567A128E4E95C00E878A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2495679F28E4E74E00E878A0 /* Color.swift */,
+				249567A228E4E96D00E878A0 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		249567A428E4E99900E878A0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				249567A528E4E9A900E878A0 /* Validatable+String.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		249567A728E4E9BE00E878A0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2475D80128E3CED700630DE5 /* blackmarketApp.swift */,
+				249567A828E4EEF700E878A0 /* LocalizedString.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		249567AA28E4EF0A00E878A0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2475D80528E3CED800630DE5 /* Assets.xcassets */,
+				249567AB28E4EF2B00E878A0 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		249567AD28E4EF4B00E878A0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				249567A128E4E95C00E878A0 /* Extensions */,
+				249567A428E4E99900E878A0 /* Protocols */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		249567AE28E4EF7700E878A0 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				249567BA28E4F04100E878A0 /* Constants.swift */,
+				249567B728E4EFEC00E878A0 /* Styles */,
+				249567B128E4EFB200E878A0 /* Common */,
+				249567BD28E4FDD900E878A0 /* Views */,
+				249567BC28E4FDB900E878A0 /* ViewModels */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		249567B128E4EFB200E878A0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2475D82C28E4DABE00630DE5 /* StateButton.swift */,
+				249567B228E4EFBC00E878A0 /* Textfield */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		249567B228E4EFBC00E878A0 /* Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				249567B328E4EFC800E878A0 /* TextFieldView.swift */,
+				249567B428E4EFC800E878A0 /* TextFieldViewConfiguration.swift */,
+			);
+			path = Textfield;
+			sourceTree = "<group>";
+		};
+		249567B728E4EFEC00E878A0 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				249567B828E4EFFE00E878A0 /* TextFieldStyles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		249567BC28E4FDB900E878A0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				249567BE28E4FE5600E878A0 /* SignInViewModel.swift */,
+				249567C228E7721F00E878A0 /* SignUpViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		249567BD28E4FDD900E878A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2475D80328E3CED700630DE5 /* SignInView.swift */,
+				249567C028E771FD00E878A0 /* SignUpView.swift */,
+				249567C428EA599500E878A0 /* ForgotPasswordView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2475D80A28E3CED800630DE5 /* Preview Assets.xcassets in Resources */,
+				249567AC28E4EF2B00E878A0 /* Localizable.strings in Resources */,
 				2475D80628E3CED800630DE5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,8 +390,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2475D80428E3CED700630DE5 /* ContentView.swift in Sources */,
+				249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */,
+				249567BB28E4F04100E878A0 /* Constants.swift in Sources */,
+				249567B928E4EFFE00E878A0 /* TextFieldStyles.swift in Sources */,
+				2475D80428E3CED700630DE5 /* SignInView.swift in Sources */,
+				249567B528E4EFC800E878A0 /* TextFieldView.swift in Sources */,
+				2475D82D28E4DABE00630DE5 /* StateButton.swift in Sources */,
+				249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */,
+				249567A928E4EEF700E878A0 /* LocalizedString.swift in Sources */,
+				249567A328E4E96D00E878A0 /* String.swift in Sources */,
+				249567C128E771FD00E878A0 /* SignUpView.swift in Sources */,
+				249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */,
+				249567B628E4EFC800E878A0 /* TextFieldViewConfiguration.swift in Sources */,
 				2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */,
+				249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */,
+				249567A028E4E74E00E878A0 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

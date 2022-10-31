@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  blackmarket
+
+  Created by Daniel Parra on 9/28/22.
+  
+*/
+
+// MARK: CONSTANTS
+
+"error" = "error";
+
+// MARK: SIGN IN SCREEN
+
+"sign_in_screen_log_in_button" = "Log in";
+"sign_in_screen_sign_up_button" = "Sign up";
+"sign_in_screen_forgot_button" = "I forgot my password";
+"sign_in_screen_no_account_label" = "Don’t have an account?";
+
+"sign_in_email_textfield_title" = "Email";
+"sign_in_email_textfield_placeholder" = "Type your email or telephone";
+"sign_in_email_textfield_error" = "Please enter a valid email";
+"sign_in_name_textfield_title" = "Full name";
+"sign_in_name_textfield_placeholder" = "Type your full name";
+"sign_in_name_textfield_error" = "Please enter a valid name";
+"sign_in_password_textfield_title" = "Password";
+"sign_in_password_textfield_placeholder" = "Type your password";
+"sign_in_password_textfield_error" = "Please enter a valid password";
+
+// MARK: SIGN UP SCREEN
+
+"sign_up_disclaimer_body" = "By signing up, you accept the";
+"sign_up_disclaimer_end" = "and the";
+"sign_up_data_policy" = "Data Policy";
+"sign_up_cookie_policy" = "Cookie Policy.";
+"sign_up_already_have_account" = "Already have an account? Log in";
+"sign_up_log_in" = "Log in";
