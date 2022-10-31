@@ -10,29 +10,29 @@ import SwiftUI
 struct SignInView: View {
     
     @ObservedObject var viewModel = SignInViewModel()
-
+    
     var body: some View {
         NavigationView {
-            VStack(spacing: 16.0) {
+            VStack(spacing: UI.SignInView.spacing) {
                 VStack {
                     Image("logo")
                         .scaledToFit()
-                        .padding(.bottom, 36.0)
+                        .padding(.bottom, UI.SignInView.LogoImage.padding)
                     
                     VStack {
                         TextFieldView(fieldConfiguration: $viewModel.emailConfiguration)
                         TextFieldView(fieldConfiguration: $viewModel.passwordConfiguration)
                     }
-                    .padding(.horizontal, 28.0)
+                    .padding(.horizontal, UI.SignInView.TextFieldsVStack.padding)
                     
                     StateButton(
                         action: { viewModel.logIn() },
                         title: LocalizedString.SignInScreen.signInButton,
                         isValid: viewModel.isValid
                     )
-                    .frame(maxHeight: 45)
-                    .padding(.horizontal, 28.0)
-                    .padding(.bottom, 16.0)
+                    .frame(maxHeight: UI.SignInView.StateButton.maxHeight)
+                    .padding(.horizontal, UI.SignInView.StateButton.horizontalPadding)
+                    .padding(.bottom, UI.SignInView.StateButton.bottomPadding)
                     
                     NavigationLink {
                         ForgotPasswordView()
@@ -40,45 +40,93 @@ struct SignInView: View {
                         Text(LocalizedString.SignInScreen.forgotPasswordButton)
                             .fontWeight(.bold)
                             .foregroundColor(Color.link)
-                            .padding(.bottom, 20.0)
+                            .padding(.bottom, UI.SignInView.ForgotPasswordLabel.bottomPadding)
                     }
                 }
-                .padding(.top, 40.0)
+                .padding(.top, UI.SignInView.TopVStack.topPaddig)
                 .frame(maxWidth: .infinity, alignment: .top)
                 .background(.white)
-                .cornerRadius(8)
+                .cornerRadius(UI.Defaults.cornerRadius)
                 
                 VStack {
                     Text(LocalizedString.SignInScreen.noAccountLabel)
-                        .padding(.top, 20.0)
+                        .padding(.top, UI.SignInView.NoAccountLabel.topPadding)
                     NavigationLink {
                         SignUpView()
                     } label: {
                         Text(LocalizedString.SignInScreen.signUpButtonTitle)
                             .font(.subheadline)
-                            .frame(maxWidth: .infinity, maxHeight: 45)
+                            .frame(maxWidth: .infinity, maxHeight: UI.SignInView.SignUpButton.maxHeight)
                             .fontWeight(.bold)
                             .foregroundColor(.black)
                             .overlay(
-                                RoundedRectangle(cornerRadius: 8)
+                                RoundedRectangle(cornerRadius: UI.Defaults.cornerRadius)
                                     .stroke(.black)
                             )
                     }
-                    .padding(.horizontal, 28.0)
-                    .padding(.bottom, 16.0)
+                    .padding(.horizontal, UI.SignInView.SignUpLink.horizontalPadding)
+                    .padding(.bottom, UI.SignInView.SignUpLink.bottomPadding)
                 }
                 .frame(maxWidth: .infinity, alignment: .bottom)
                 .background(.white)
-                .cornerRadius(8)
+                .cornerRadius(UI.Defaults.cornerRadius)
                 Spacer()
             }
-            .padding(.top, 60)
-            .padding(.horizontal, 25)
+            .padding(.top, UI.SignInView.BotomVStack.topPaddig)
+            .padding(.horizontal, UI.SignInView.BotomVStack.horizontalPaddig)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 Image("background")
                     .scaledToFill()
             )
+        }
+    }
+}
+
+private extension UI {
+    enum SignInView {
+        static let spacing: CGFloat = 16.0
+        
+        enum TopVStack {
+            static let topPaddig: CGFloat = 40.0
+        }
+        
+        enum BotomVStack {
+            static let topPaddig: CGFloat = 60.0
+            static let horizontalPaddig: CGFloat = 25.0
+        }
+        
+        enum LogoImage {
+            static let padding: CGFloat = 36.0
+        }
+        
+        enum TextFieldsVStack {
+            static let padding: CGFloat = 28.0
+        }
+        
+        enum StateButton {
+            static let maxHeight: CGFloat = 45.0
+            static let horizontalPadding: CGFloat = 28.0
+            static let bottomPadding: CGFloat = 16.0
+        }
+        
+        enum ForgotPasswordLabel {
+            static let bottomPadding: CGFloat = 20.0
+        }
+        
+        enum NoAccountLabel {
+            static let topPadding: CGFloat = 20.0
+        }
+        
+        enum SignUpButton {
+            static let maxHeight: CGFloat = 45.0
+            static let horizontalPadding: CGFloat = 28.0
+            static let bottomPadding: CGFloat = 16.0
+        }
+        
+        enum SignUpLink {
+            static let horizontalPadding: CGFloat = 28.0
+            static let bottomPadding: CGFloat = 16.0
         }
     }
 }

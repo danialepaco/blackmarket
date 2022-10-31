@@ -11,7 +11,8 @@ struct TextFieldView: View {
     
     @Binding var fieldConfiguration: TextFieldViewConfiguration
     @State var shouldShowError = false
-    
+    @State var isEmpty = false
+
     var body: some View {
         VStack {
             VStack {
@@ -20,7 +21,7 @@ struct TextFieldView: View {
                     .font(Font.headline.weight(.regular))
                     .foregroundColor(.black)
                     .opacity(
-                        fieldConfiguration.isEmpty
+                        isEmpty
                         ? UI.TextFieldView.textOpacityEmpty
                         : UI.TextFieldView.textOpacityNotEmpty
                     )
@@ -50,7 +51,7 @@ struct TextFieldView: View {
                 .frame(maxWidth: .infinity, maxHeight: UI.TextFieldView.rectangleHeight)
                 .foregroundColor(shouldShowError ? .red : .black)
                 .opacity(
-                    fieldConfiguration.isEmpty
+                    isEmpty
                     ? UI.TextFieldView.rectangleOpacityEmpty
                     : UI.TextFieldView.rectangleOpacityNotEmpty
                 )
@@ -67,6 +68,8 @@ struct TextFieldView: View {
         }
         .onReceive(fieldConfiguration.shouldShowError) { value in
             shouldShowError = value
+        }.onReceive(fieldConfiguration.isEmpty) { value in
+            isEmpty = value
         }
     }
 }
@@ -96,7 +99,7 @@ struct TextFieldView_Previews: PreviewProvider {
             placeholder: "Placeholder",
             value: "test@test",
             validations: [.email, .nonEmpty],
-            errorMessage: "Please enter a valid email"
+            errorMessage: "sign_in_email_textfield_error".localized
         )
         
         var body: some View {

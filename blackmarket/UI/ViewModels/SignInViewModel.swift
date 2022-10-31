@@ -23,14 +23,14 @@ class SignInViewModel: ObservableObject, Identifiable {
         isSecure: true,
         errorMessage: LocalizedString.SignInTextField.passwordError
     )
-        
+    
     var isValid: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
             .map { emailIsValid, passwordIsValid in
-            emailIsValid && passwordIsValid
+                emailIsValid && passwordIsValid
             }.eraseToAnyPublisher()
     }
-        
+    
     func logIn() {
         print("Log in button tapped")
     }

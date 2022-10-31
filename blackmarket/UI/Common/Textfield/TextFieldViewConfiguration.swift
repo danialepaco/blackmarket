@@ -10,9 +10,9 @@ import Combine
 final class TextFieldViewConfiguration: ObservableObject {
         
     @Published var value: String = ""
-        
+
     var shouldShowError: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest(isValid, Just(isEmpty))
+        Publishers.CombineLatest(isValid, isEmpty)
             .map { isValid, isEmpty in
                 !isValid && !isEmpty
             }.eraseToAnyPublisher()
@@ -27,14 +27,16 @@ final class TextFieldViewConfiguration: ObservableObject {
             }.eraseToAnyPublisher()
     }
         
-    private (set )var validations: [ValidationType]
+    private (set) var validations: [ValidationType]
     var errorMessage: String
     var title: String
     var placeholder: String
     var isSecure = false
     
-    var isEmpty: Bool {
-        return value.isEmpty
+    var isEmpty: AnyPublisher<Bool, Never> {
+        $value.map {
+            $0.isEmpty
+        }.eraseToAnyPublisher()
     }
     
     init(
