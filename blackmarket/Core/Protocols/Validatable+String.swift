@@ -13,7 +13,6 @@ enum ValidationType {
     case integer
     case date(dateFormat: String)
     case phone
-    case none
 }
 
 internal protocol Validatable {
@@ -32,8 +31,6 @@ extension String: Validatable {
                 return isDateFormatted(dateFormat)
             case .phone:
                 return isPhoneNumber()
-            case .none:
-                return true
             default:
                 return !isEmpty
             }

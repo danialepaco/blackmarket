@@ -43,7 +43,7 @@ final class TextFieldViewConfiguration: ObservableObject {
         title: String,
         placeholder: String,
         value: String = "",
-        validations: [ValidationType] = [.none],
+        validations: [ValidationType] = [],
         isSecure: Bool = false,
         errorMessage: String = ""
     ) {
