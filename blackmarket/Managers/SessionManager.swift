@@ -45,10 +45,8 @@ internal class SessionManager: CurrentUserSessionProvider {
         userDefaults.removeObject(forKey: SessionManager.SESSIONKEY)
     }
     
-    func saveUser(session: Session) {
-        DispatchQueue.main.async {
-            self.userDefaults.currentSession = session
-        }
+    @MainActor func saveUser(session: Session) {
+        userDefaults.currentSession = session
     }
 }
 

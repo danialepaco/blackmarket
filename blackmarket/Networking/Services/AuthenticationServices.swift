@@ -47,7 +47,7 @@ internal class AuthenticationServices {
             case .success(let user):
                 if
                     let user = user,
-                    self.saveUserSession(user.data, headers: response.header)
+                    await self.saveUserSession(user.data, headers: response.header)
                 {
                     return .success(user)
                 } else {
@@ -79,7 +79,7 @@ internal class AuthenticationServices {
             case .success(let user):
                 if
                     let user = user,
-                    self.saveUserSession(user.data, headers: response.header)
+                    await self.saveUserSession(user.data, headers: response.header)
                 {
                     return .success(user)
                 } else {
@@ -111,7 +111,7 @@ internal class AuthenticationServices {
         }
     }
     
-    private func saveUserSession(
+    @MainActor private func saveUserSession(
         _ user: User?,
         headers: [AnyHashable: Any]
     ) -> Bool {
