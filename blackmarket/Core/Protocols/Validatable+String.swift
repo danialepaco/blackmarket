@@ -31,7 +31,7 @@ extension String: Validatable {
                 return isDateFormatted(dateFormat)
             case .phone:
                 return isPhoneNumber()
-            default:
+            case .nonEmpty:
                 return !isEmpty
             }
         }
