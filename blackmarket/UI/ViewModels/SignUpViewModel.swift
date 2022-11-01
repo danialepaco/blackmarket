@@ -10,6 +10,8 @@ import Combine
 
 class SignUpViewModel: ObservableObject, Identifiable {
     
+    private let authServices: AuthenticationServices
+    
     private let dataPrivacy = "https://www.osthus.com/osthus-glossary/data-policy/#:~:text=A%20data%20policy%20contains%20a,data%20quality%2C%20and%20data%20architecture."
     
     private let cockiesPrivacy = "https://www.grafterr.com/cookie-policy?gclid=CjwKCAjwp9qZBhBkEiwAsYFsb5_jgSsJFbQvqYDNyqLhOrgi8KZZqZjcZjUXKk9-Cj-vbV0ZgQgx6RoCIKEQAvD_BwE"
@@ -77,8 +79,13 @@ class SignUpViewModel: ObservableObject, Identifiable {
         return text
     }()
     
-    func logIn() {
-        print("Log in button tapped")
+    init(authServices: AuthenticationServices = AuthenticationServices()) {
+        self.authServices = authServices
+    }
+    
+    func signUp() async {
+        //TODO: handle errors
+        await authServices.signup(email: emailConfiguration.value,name: nameConfiguration.value, password: passwordConfiguration.value)
     }
 }
 

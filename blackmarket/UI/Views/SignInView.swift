@@ -26,7 +26,11 @@ struct SignInView: View {
                     .padding(.horizontal, UI.SignInView.TextFieldsVStack.padding)
                     
                     StateButton(
-                        action: { viewModel.logIn() },
+                        action: {
+                            Task {
+                                await viewModel.logIn()
+                            }
+                        },
                         title: LocalizedString.SignInScreen.signInButton,
                         isValid: viewModel.isValid
                     )

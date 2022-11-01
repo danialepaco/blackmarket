@@ -10,6 +10,14 @@
 
 "error" = "error";
 
+// MARK: Authorization Errors
+
+"authError_login" = "There was an error with your login credentials.";
+"authError_signUp" = "There was an error with the data you entered.\n Maybe try with a more secure password.";
+"authError_logout" = "There was an error logging you out.";
+"authError_mapping" = "Mapping data has failed.";
+"authError_request" = "Request failed.";
+
 // MARK: SIGN IN SCREEN
 
 "sign_in_screen_log_in_button" = "Log in";

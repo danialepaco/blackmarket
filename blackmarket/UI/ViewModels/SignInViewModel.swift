@@ -9,6 +9,8 @@ import Combine
 
 class SignInViewModel: ObservableObject, Identifiable {
     
+    private let authServices: AuthenticationServices
+    
     @Published var emailConfiguration = TextFieldViewConfiguration(
         title: LocalizedString.SignInTextField.emailTitle,
         placeholder: LocalizedString.SignInTextField.emailPlaceholder,
@@ -31,8 +33,13 @@ class SignInViewModel: ObservableObject, Identifiable {
             }.eraseToAnyPublisher()
     }
     
-    func logIn() {
-        print("Log in button tapped")
+    init(authServices: AuthenticationServices = AuthenticationServices()) {
+        self.authServices = authServices
+    }
+    
+    func logIn() async {
+        //TODO: handle errors
+        await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
     }
 }
 

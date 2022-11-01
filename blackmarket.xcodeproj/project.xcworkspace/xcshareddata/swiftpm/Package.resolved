@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "8dd85aee02e39dd280c75eef88ffdb86eed4b07b",
+        "version" : "5.6.2"
+      }
+    },
+    {
+      "identity" : "rsswiftnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rootstrap/RSSwiftNetworking.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "abf45dec27afd68db9d4bf4429c0823ac4c7b5f6"
+      }
+    }
+  ],
+  "version" : 2
+}
