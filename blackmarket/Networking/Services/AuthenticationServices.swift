@@ -6,16 +6,32 @@
 //  Copyright © 2020 Rootstrap Inc. All rights reserved.
 //
 
+import Foundation
 import RSSwiftNetworking
 
 internal class AuthenticationServices {
     
-    enum AuthError: Error {
-        case loginError
-        case signUpError
-        case logoutError
-        case mapingError
-        case error
+    enum AuthError: LocalizedError {
+        case login
+        case signUp
+        case logout
+        case mapping
+        case request
+        
+        var errorDescription: String? {
+            switch self {
+            case .login:
+                return "authError_login".localized
+            case .signUp:
+                return "authError_signUp".localized
+            case .logout:
+                return "authError_logout".localized
+            case .mapping:
+                return "authError_mapping".localized
+            case .request:
+                return "authError_request".localized
+            }
+        }
     }
     
     // MARK: - Properties
@@ -51,13 +67,13 @@ internal class AuthenticationServices {
                 {
                     return .success(user)
                 } else {
-                    return .failure(AuthError.mapingError)
+                    return .failure(AuthError.mapping)
                 }
             case .failure:
-                return .failure(AuthError.loginError)
+                return .failure(AuthError.login)
             }
         } catch {
-            return .failure(AuthError.error)
+            return .failure(AuthError.request)
         }
     }
     
@@ -83,13 +99,13 @@ internal class AuthenticationServices {
                 {
                     return .success(user)
                 } else {
-                    return .failure(AuthError.mapingError)
+                    return .failure(AuthError.mapping)
                 }
             case .failure:
-                return .failure(AuthError.signUpError)
+                return .failure(AuthError.signUp)
             }
         } catch {
-            return .failure(AuthError.error)
+            return .failure(AuthError.request)
         }
     }
     
@@ -104,10 +120,10 @@ internal class AuthenticationServices {
                 sessionManager.deleteSession()
                 return .success(true)
             case .failure:
-                return .failure(AuthError.logoutError)
+                return .failure(AuthError.logout)
             }
         } catch {
-            return .failure(AuthError.error)
+            return .failure(AuthError.request)
         }
     }
     
