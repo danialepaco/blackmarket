@@ -26,6 +26,9 @@ class SignInViewModel: ObservableObject, Identifiable {
         errorMessage: LocalizedString.SignInTextField.passwordError
     )
     
+    @Published var errorString: String = ""
+    @Published var isFetching: Bool = false
+
     var isValid: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
             .map { emailIsValid, passwordIsValid in
@@ -37,9 +40,17 @@ class SignInViewModel: ObservableObject, Identifiable {
         self.authServices = authServices
     }
     
-    func logIn() async {
-        //TODO: handle errors
-        await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
+    @MainActor func logIn() async {
+        isFetching = true
+        let response = await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
+        
+        switch response {
+        case .failure(let error):
+            errorString = error.localizedDescription
+        default:
+            break
+        }
+        isFetching = false
     }
 }
 

@@ -72,8 +72,19 @@ internal class AuthenticationServices {
             case .failure:
                 return .failure(AuthError.login)
             }
-        } catch {
-            return .failure(AuthError.request)
+        } catch let error {
+            guard
+                let responseError = error.asAFError,
+                let errorCode = responseError.responseCode
+            else {
+                return .failure(AuthError.request)
+            }
+            switch errorCode {
+            case _ where errorCode >= 400:
+                return .failure(AuthError.login)
+            default:
+                return .failure(AuthError.request)
+            }
         }
     }
     
@@ -104,8 +115,19 @@ internal class AuthenticationServices {
             case .failure:
                 return .failure(AuthError.signUp)
             }
-        } catch {
-            return .failure(AuthError.request)
+        } catch let error {
+            guard
+                let responseError = error.asAFError,
+                let errorCode = responseError.responseCode
+            else {
+                return .failure(AuthError.request)
+            }
+            switch errorCode {
+            case _ where errorCode >= 400:
+                return .failure(AuthError.signUp)
+            default:
+                return .failure(AuthError.request)
+            }
         }
     }
     

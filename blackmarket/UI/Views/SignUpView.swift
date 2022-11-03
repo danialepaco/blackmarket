@@ -26,6 +26,12 @@ struct SignUpView: View {
                 }
                 .padding(.horizontal, UI.SignUpView.TextFieldsVStack.horizontalPadding)
                 
+                Text(viewModel.errorString)
+                    .font(.system(size: UI.SignUpView.ErrorLabel.fontSize, weight: .bold))
+                    .foregroundColor(Color.errorRed)
+                    .padding(.horizontal, UI.SignUpView.ErrorLabel.horizontalPadding)
+                    .minimumScaleFactor(UI.SignUpView.ErrorLabel.minimumScaleFactor)
+                
                 StateButton(
                     action: {
                         Task {
@@ -33,7 +39,8 @@ struct SignUpView: View {
                         }
                     },
                     title: LocalizedString.SignUpScreen.signUpButtonTitle,
-                    isValid: viewModel.isValid
+                    isValid: viewModel.isValid,
+                    isFetching: viewModel.$isFetching.eraseToAnyPublisher()
                 )
                 .frame(maxHeight: UI.SignUpView.StateButton.maxHeight)
                 .padding(.horizontal, UI.SignUpView.StateButton.horizontalPadding)
@@ -61,7 +68,9 @@ struct SignUpView: View {
             Spacer()
         }
         .navigationBarBackButtonHidden()
-        .padding(.top, UI.SignUpView.topPaddig)
+        .padding(
+            .top, viewModel.errorString.isEmpty ? UI.SignUpView.topPaddig : UI.SignUpView.topPaddigWithError
+        )
         .padding(.horizontal, UI.SignUpView.horizontalPaddig)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
@@ -75,6 +84,7 @@ private extension UI {
     enum SignUpView {
         static let spacing: CGFloat = 16.0
         static let topPaddig: CGFloat = 60.0
+        static let topPaddigWithError: CGFloat = 30.0
         static let horizontalPaddig: CGFloat = 25.0
         
         enum TopVStack {
@@ -88,6 +98,12 @@ private extension UI {
         
         enum TextFieldsVStack {
             static let horizontalPadding: CGFloat = 28.0
+        }
+        
+        enum ErrorLabel {
+            static let horizontalPadding: CGFloat = 22.0
+            static let minimumScaleFactor: CGFloat = 0.5
+            static let fontSize: CGFloat = 16.0
         }
         
         enum StateButton {

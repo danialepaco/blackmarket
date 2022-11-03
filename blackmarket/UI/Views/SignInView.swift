@@ -25,6 +25,12 @@ struct SignInView: View {
                     }
                     .padding(.horizontal, UI.SignInView.TextFieldsVStack.padding)
                     
+                    Text(viewModel.errorString)
+                        .font(.system(size: UI.SignInView.ErrorLabel.fontSize, weight: .bold))
+                        .foregroundColor(Color.errorRed)
+                        .padding(.horizontal, UI.SignInView.ErrorLabel.horizontalPadding)
+                        .minimumScaleFactor(UI.SignInView.ErrorLabel.minimumScaleFactor)
+                    
                     StateButton(
                         action: {
                             Task {
@@ -32,7 +38,8 @@ struct SignInView: View {
                             }
                         },
                         title: LocalizedString.SignInScreen.signInButton,
-                        isValid: viewModel.isValid
+                        isValid: viewModel.isValid,
+                        isFetching: viewModel.$isFetching.eraseToAnyPublisher()
                     )
                     .frame(maxHeight: UI.SignInView.StateButton.maxHeight)
                     .padding(.horizontal, UI.SignInView.StateButton.horizontalPadding)
@@ -106,6 +113,12 @@ private extension UI {
         
         enum TextFieldsVStack {
             static let padding: CGFloat = 28.0
+        }
+        
+        enum ErrorLabel {
+            static let horizontalPadding: CGFloat = 22.0
+            static let minimumScaleFactor: CGFloat = 0.5
+            static let fontSize: CGFloat = 16.0
         }
         
         enum StateButton {

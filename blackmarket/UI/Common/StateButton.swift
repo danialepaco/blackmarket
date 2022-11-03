@@ -12,37 +12,53 @@ struct StateButton: View {
     let action: () -> ()
     let title: String
     @State private var isEnabled: Bool = false
+    @State private var isLoading: Bool = false
     let isValid: AnyPublisher<Bool, Never>
+    let isFetching: AnyPublisher<Bool, Never>
 
     var body: some View {
-            Button(action: {
-                withAnimation {
-                    action()
+        Button(action: {
+            withAnimation {
+                action()
+            }
+        }) {
+            ZStack {
+                if isLoading {
+                    ProgressView()
+                        .tint(
+                            isEnabled ? .white : .black
+                        )
+                } else {
+                    Text(title)
+                        .font(.subheadline)
+                        .fontWeight(.bold)
                 }
-            }) {
-                Text(title)
-                    .font(.subheadline)
-                    .frame(maxWidth: .infinity, maxHeight: 45)
-                    .fontWeight(.bold)
-                    .foregroundColor(
-                        isEnabled ? Color.white : Color.disabledGray
-                    )
-                    .background(
-                        isEnabled ? Color.black : Color.bone
-                    )
             }
-            .cornerRadius(8)
-            .disabled(!isEnabled)
-            .onReceive(isValid) { isValid in
-                isEnabled = isValid
-            }
+            .frame(maxWidth: .infinity, minHeight: 45)
+            .foregroundColor(
+                isEnabled ? Color.white : Color.disabledGray
+            )
+            .background(
+                isEnabled ? Color.black : Color.bone
+            )
+        }
+        .cornerRadius(8)
+        .disabled(!isEnabled)
+        .onReceive(isValid) { isValid in
+            isEnabled = isValid
+        }
+        .onReceive(isFetching) { isFetching in
+            isLoading = isFetching
+        }
     }
 }
 
 struct StateButton_Previews: PreviewProvider {
     static var previews: some View {
-        let subject = CurrentValueSubject<Bool, Never>(false)
-        let isValid: AnyPublisher<Bool, Never> = subject.eraseToAnyPublisher()
-        StateButton(action: {}, title: "Button", isValid: isValid)
+        let validSubject = CurrentValueSubject<Bool, Never>(false)
+        let isValid: AnyPublisher<Bool, Never> = validSubject.eraseToAnyPublisher()
+        let fetchingSubject = CurrentValueSubject<Bool, Never>(false)
+        let isFetching: AnyPublisher<Bool, Never> = fetchingSubject.eraseToAnyPublisher()
+        StateButton(action: {}, title: "Button", isValid: isValid, isFetching: isFetching)
     }
 }

@@ -12,8 +12,8 @@
 
 // MARK: Authorization Errors
 
-"authError_login" = "There was an error with your login credentials.";
-"authError_signUp" = "There was an error with the data you entered.\n Maybe try with a more secure password.";
+"authError_login" = "Sorry! Your email or password are incorrect.";
+"authError_signUp" = "There was an error with the data you entered.\nMaybe try with a more secure password.";
 "authError_logout" = "There was an error logging you out.";
 "authError_mapping" = "Mapping data has failed.";
 "authError_request" = "Request failed.";
