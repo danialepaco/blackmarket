@@ -12,7 +12,7 @@ struct TextFieldView: View {
     @Binding var fieldConfiguration: TextFieldViewConfiguration
     @State var shouldShowError = false
     @State var isEmpty = false
-    @State private var isSecuredField: Bool = true
+    @State private var isSecuredField = true
     
     var body: some View {
         VStack {
