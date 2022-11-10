@@ -10,6 +10,7 @@ import SwiftUI
 struct SignInView: View {
     
     @ObservedObject var viewModel = SignInViewModel()
+    @State var errorString = ""
     
     var body: some View {
         NavigationView {
@@ -25,11 +26,14 @@ struct SignInView: View {
                     }
                     .padding(.horizontal, UI.SignInView.TextFieldsVStack.padding)
                     
-                    Text(viewModel.errorString)
+                    Text(errorString)
                         .font(.system(size: UI.SignInView.ErrorLabel.fontSize, weight: .bold))
                         .foregroundColor(Color.errorRed)
                         .padding(.horizontal, UI.SignInView.ErrorLabel.horizontalPadding)
                         .minimumScaleFactor(UI.SignInView.ErrorLabel.minimumScaleFactor)
+                        .onReceive(viewModel.errorPublisher) { value in
+                            errorString = value
+                        }
                     
                     StateButton(
                         action: {
@@ -39,7 +43,7 @@ struct SignInView: View {
                         },
                         title: LocalizedString.SignInScreen.signInButton,
                         isValid: viewModel.isValid,
-                        isFetching: viewModel.$isFetching.eraseToAnyPublisher()
+                        isFetching: viewModel.isFetchingPublisher
                     )
                     .frame(maxHeight: UI.SignInView.StateButton.maxHeight)
                     .padding(.horizontal, UI.SignInView.StateButton.horizontalPadding)

@@ -11,6 +11,7 @@ struct SignUpView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = SignUpViewModel()
+    @State var errorString = ""
     
     var body: some View {
         VStack(spacing: UI.SignUpView.spacing) {
@@ -26,11 +27,14 @@ struct SignUpView: View {
                 }
                 .padding(.horizontal, UI.SignUpView.TextFieldsVStack.horizontalPadding)
                 
-                Text(viewModel.errorString)
+                Text(errorString)
                     .font(.system(size: UI.SignUpView.ErrorLabel.fontSize, weight: .bold))
                     .foregroundColor(Color.errorRed)
                     .padding(.horizontal, UI.SignUpView.ErrorLabel.horizontalPadding)
                     .minimumScaleFactor(UI.SignUpView.ErrorLabel.minimumScaleFactor)
+                    .onReceive(viewModel.errorPublisher) { value in
+                        errorString = value
+                    }
                 
                 StateButton(
                     action: {
@@ -40,7 +44,7 @@ struct SignUpView: View {
                     },
                     title: LocalizedString.SignUpScreen.signUpButtonTitle,
                     isValid: viewModel.isValid,
-                    isFetching: viewModel.$isFetching.eraseToAnyPublisher()
+                    isFetching: viewModel.isFetchingPublisher
                 )
                 .frame(maxHeight: UI.SignUpView.StateButton.maxHeight)
                 .padding(.horizontal, UI.SignUpView.StateButton.horizontalPadding)
@@ -69,7 +73,7 @@ struct SignUpView: View {
         }
         .navigationBarBackButtonHidden()
         .padding(
-            .top, viewModel.errorString.isEmpty ? UI.SignUpView.topPaddig : UI.SignUpView.topPaddigWithError
+            .top, errorString.isEmpty ? UI.SignUpView.topPaddig : UI.SignUpView.topPaddigWithError
         )
         .padding(.horizontal, UI.SignUpView.horizontalPaddig)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -5,10 +5,13 @@
 //  Created by Daniel Parra on 9/28/22.
 //
 
+import Foundation
 import Combine
 
 class SignInViewModel: ObservableObject, Identifiable {
     
+    private let isFetchingSubject = CurrentValueSubject<Bool, Never>(false)
+    private let errorSubject = CurrentValueSubject<String, Never>("")
     private let authServices: AuthenticationServices
     
     @Published var emailConfiguration = TextFieldViewConfiguration(
@@ -26,9 +29,18 @@ class SignInViewModel: ObservableObject, Identifiable {
         errorMessage: LocalizedString.SignInTextField.passwordError
     )
     
-    @Published var errorString: String = ""
-    @Published var isFetching: Bool = false
-
+    var errorPublisher: AnyPublisher<String, Never> {
+        errorSubject
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    var isFetchingPublisher: AnyPublisher<Bool, Never> {
+        isFetchingSubject
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
     var isValid: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
             .map { emailIsValid, passwordIsValid in
@@ -40,17 +52,17 @@ class SignInViewModel: ObservableObject, Identifiable {
         self.authServices = authServices
     }
     
-    @MainActor func logIn() async {
-        isFetching = true
+    func logIn() async {
+        isFetchingSubject.send(true)
         let response = await authServices.login(email: emailConfiguration.value, password: passwordConfiguration.value)
         
         switch response {
         case .failure(let error):
-            errorString = error.localizedDescription
+            errorSubject.send(error.localizedDescription)
         default:
             break
         }
-        isFetching = false
+        isFetchingSubject.send(false)
     }
 }
 

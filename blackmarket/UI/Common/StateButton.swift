@@ -18,16 +18,12 @@ struct StateButton: View {
 
     var body: some View {
         Button(action: {
-            withAnimation {
-                action()
-            }
+            withAnimation { action() }
         }) {
             ZStack {
                 if isLoading {
                     ProgressView()
-                        .tint(
-                            isEnabled ? .white : .black
-                        )
+                        .tint(isEnabled ? .white : .black)
                 } else {
                     Text(title)
                         .font(.subheadline)

@@ -10,6 +10,8 @@ import Combine
 
 class SignUpViewModel: ObservableObject, Identifiable {
     
+    private let isFetchingSubject = CurrentValueSubject<Bool, Never>(false)
+    private let errorSubject = CurrentValueSubject<String, Never>("")
     private let authServices: AuthenticationServices
     
     private let dataPrivacy = "https://www.osthus.com/osthus-glossary/data-policy/#:~:text=A%20data%20policy%20contains%20a,data%20quality%2C%20and%20data%20architecture."
@@ -38,8 +40,17 @@ class SignUpViewModel: ObservableObject, Identifiable {
         errorMessage: LocalizedString.SignUpTextField.passwordError
     )
     
-    @Published var errorString: String = ""
-    @Published var isFetching: Bool = false
+    var errorPublisher: AnyPublisher<String, Never> {
+        errorSubject
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    var isFetchingPublisher: AnyPublisher<Bool, Never> {
+        isFetchingSubject
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
     
     var isValid: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(emailConfiguration.isValid, passwordConfiguration.isValid)
@@ -87,16 +98,16 @@ class SignUpViewModel: ObservableObject, Identifiable {
     }
     
     @MainActor func signUp() async {
-        isFetching = true
+        isFetchingSubject.send(true)
         let response = await authServices.signup(email: emailConfiguration.value,name: nameConfiguration.value, password: passwordConfiguration.value)
         
         switch response {
         case .failure(let error):
-            errorString = error.localizedDescription
+            errorSubject.send(error.localizedDescription)
         default:
             break
         }
-        isFetching = false
+        isFetchingSubject.send(false)
     }
 }
 
