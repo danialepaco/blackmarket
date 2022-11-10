@@ -51,6 +51,18 @@ internal class AuthenticationServices {
         self.apiClient = apiClient
     }
     
+    private func mapError(error: Error, typeError: AuthError) -> AuthError {
+        guard let error = error as? APIError else {
+            return AuthError.request
+        }
+        switch error.statusCode {
+        case _ where error.statusCode >= 400:
+            return typeError
+        default:
+            return AuthError.request
+        }
+    }
+    
     @discardableResult func login(
         email: String,
         password: String
@@ -73,18 +85,7 @@ internal class AuthenticationServices {
                 return .failure(AuthError.login)
             }
         } catch let error {
-            guard
-                let responseError = error.asAFError,
-                let errorCode = responseError.responseCode
-            else {
-                return .failure(AuthError.request)
-            }
-            switch errorCode {
-            case _ where errorCode >= 400:
-                return .failure(AuthError.login)
-            default:
-                return .failure(AuthError.request)
-            }
+            return .failure(mapError(error: error, typeError: .login))
         }
     }
     
@@ -116,18 +117,7 @@ internal class AuthenticationServices {
                 return .failure(AuthError.signUp)
             }
         } catch let error {
-            guard
-                let responseError = error.asAFError,
-                let errorCode = responseError.responseCode
-            else {
-                return .failure(AuthError.request)
-            }
-            switch errorCode {
-            case _ where errorCode >= 400:
-                return .failure(AuthError.signUp)
-            default:
-                return .failure(AuthError.request)
-            }
+            return .failure(mapError(error: error, typeError: .signUp))
         }
     }
     
@@ -145,7 +135,7 @@ internal class AuthenticationServices {
                 return .failure(AuthError.logout)
             }
         } catch {
-            return .failure(AuthError.request)
+            return .failure(mapError(error: error, typeError: .logout))
         }
     }
     
