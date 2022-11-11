@@ -51,6 +51,18 @@ internal class AuthenticationServices {
         self.apiClient = apiClient
     }
     
+    private func mapError(error: Error, typeError: AuthError) -> AuthError {
+        guard let error = error as? APIError else {
+            return AuthError.request
+        }
+        switch error.statusCode {
+        case 400...:
+            return typeError
+        default:
+            return AuthError.request
+        }
+    }
+    
     @discardableResult func login(
         email: String,
         password: String
@@ -72,8 +84,8 @@ internal class AuthenticationServices {
             case .failure:
                 return .failure(AuthError.login)
             }
-        } catch {
-            return .failure(AuthError.request)
+        } catch let error {
+            return .failure(mapError(error: error, typeError: .login))
         }
     }
     
@@ -104,8 +116,8 @@ internal class AuthenticationServices {
             case .failure:
                 return .failure(AuthError.signUp)
             }
-        } catch {
-            return .failure(AuthError.request)
+        } catch let error {
+            return .failure(mapError(error: error, typeError: .signUp))
         }
     }
     
@@ -123,7 +135,7 @@ internal class AuthenticationServices {
                 return .failure(AuthError.logout)
             }
         } catch {
-            return .failure(AuthError.request)
+            return .failure(mapError(error: error, typeError: .logout))
         }
     }
     

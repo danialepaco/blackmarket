@@ -11,6 +11,7 @@ extension Color {
     static let link = Color("link")
     static let disabledGray = Color("disabledGray")
     static let bone = Color("bone")
+    static let errorRed = Color("errorRed")
 }
 
 // Color extension to use hex values

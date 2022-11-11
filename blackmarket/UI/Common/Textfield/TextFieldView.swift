@@ -12,7 +12,8 @@ struct TextFieldView: View {
     @Binding var fieldConfiguration: TextFieldViewConfiguration
     @State var shouldShowError = false
     @State var isEmpty = false
-
+    @State private var isSecuredField = true
+    
     var body: some View {
         VStack {
             VStack {
@@ -26,24 +27,48 @@ struct TextFieldView: View {
                         : UI.TextFieldView.textOpacityNotEmpty
                     )
                 
-                if fieldConfiguration.isSecure {
-                    SecureField(fieldConfiguration.placeholder, text: $fieldConfiguration.value)
-                        .withStyle(.primary)
-                        .accessibility(identifier: "\(fieldConfiguration.title.withNoSpaces)TextField")
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black)
-                        )
+                if isSecuredField && fieldConfiguration.isSecure {
+                    ZStack(alignment: .trailing) {
+                        SecureField(fieldConfiguration.placeholder, text: $fieldConfiguration.value)
+                            .withStyle(.primary)
+                            .accessibility(identifier: "\(fieldConfiguration.title.withNoSpaces)TextField")
+                            .padding()
+                            .padding(.trailing, fieldConfiguration.isSecure ? UI.TextFieldView.trailingPadding : .zero)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: UI.Defaults.cornerRadius)
+                                    .stroke(Color.black)
+                            )
+                        Button {
+                            isSecuredField = false
+                        } label: {
+                            Image(systemName: "eye.fill")
+                                .padding(.trailing, UI.TextFieldView.imagePadding)
+                                .accentColor(.black)
+                        }
+                    }
+                    .frame(maxHeight: UI.TextFieldView.textContainerHeight)
                 } else {
-                    TextField(fieldConfiguration.placeholder, text: $fieldConfiguration.value)
-                        .withStyle(.primary)
-                        .accessibility(identifier: "\(fieldConfiguration.title.withNoSpaces)TextField")
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.black)
-                        )
+                    ZStack(alignment: .trailing) {
+                        TextField(fieldConfiguration.placeholder, text: $fieldConfiguration.value)
+                            .withStyle(.primary)
+                            .accessibility(identifier: "\(fieldConfiguration.title.withNoSpaces)TextField")
+                            .padding()
+                            .padding(.trailing, fieldConfiguration.isSecure ? UI.TextFieldView.trailingPadding : .zero)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: UI.Defaults.cornerRadius)
+                                    .stroke(Color.black)
+                            )
+                        if fieldConfiguration.isSecure {
+                            Button {
+                                isSecuredField = true
+                            } label: {
+                                Image(systemName: "eye.slash.fill")
+                                    .padding(.trailing, UI.TextFieldView.imagePadding)
+                                    .accentColor(.black)
+                            }
+                        }
+                    }
+                    .frame(maxHeight: UI.TextFieldView.textContainerHeight)
                 }
             }
             
@@ -77,6 +102,7 @@ struct TextFieldView: View {
 private extension UI {
     enum TextFieldView {
         static let horizontalPadding: Double = 20
+        static let trailingPadding: Double = 20
         static let rectangleHeight: Double = 1
         static let textOffset: Double = -30
         static let textOpacityEmpty: Double = 0.7
@@ -88,6 +114,8 @@ private extension UI {
         static let rectangleOpacityNotEmpty: Double = 1
         static let errorTextOffset: Double = -5
         static let errorTextOpacityError: Double = 1
+        static let imagePadding: Double = 16
+        static let textContainerHeight: Double = 45.0
     }
 }
 
