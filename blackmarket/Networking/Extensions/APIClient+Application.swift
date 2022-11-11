@@ -16,7 +16,9 @@ internal class Client {
     
     init(apiClient: APIClient = BaseAPIClient(
         networkProvider: AlamofireNetworkProvider(),
-        headersProvider: RailsAPIHeadersProvider(sessionProvider: SessionHeadersProvider())
+        headersProvider: RailsAPIHeadersProvider(
+            sessionProvider: SessionHeadersProvider()
+        )
     )) {
         self.apiClient = apiClient
     }
@@ -31,12 +33,14 @@ internal class Client {
                 case .success(_):
                     continuation.resume(returning: (result, responseHeaders))
                 case .failure(let error):
-                    guard let responseError = error.asAFError,
-                          let errorCode = responseError.responseCode else {
+                    if
+                        let responseError = error.asAFError,
+                        let errorCode = responseError.responseCode
+                    {
+                        continuation.resume(throwing: APIError(statusCode: errorCode))
+                    } else {
                         continuation.resume(throwing: error)
-                        return
                     }
-                    continuation.resume(throwing: APIError(statusCode: errorCode))
                 }
             }
         }
@@ -56,12 +60,14 @@ internal class Client {
                 case .success(_):
                     continuation.resume(returning: (result, responseHeaders))
                 case .failure(let error):
-                    guard let responseError = error.asAFError,
-                          let errorCode = responseError.responseCode else {
+                    if
+                        let responseError = error.asAFError,
+                        let errorCode = responseError.responseCode
+                    {
+                        continuation.resume(throwing: APIError(statusCode: errorCode))
+                    } else {
                         continuation.resume(throwing: error)
-                        return
                     }
-                    continuation.resume(throwing: APIError(statusCode: errorCode))
                 }
             }
         }

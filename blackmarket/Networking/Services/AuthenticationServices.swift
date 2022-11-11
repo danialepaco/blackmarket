@@ -56,7 +56,7 @@ internal class AuthenticationServices {
             return AuthError.request
         }
         switch error.statusCode {
-        case _ where error.statusCode >= 400:
+        case 400...:
             return typeError
         default:
             return AuthError.request
