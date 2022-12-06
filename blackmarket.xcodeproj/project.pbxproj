@@ -28,6 +28,10 @@
 		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
 		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
 		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
+		249AD2C5293FE8E30058C27F /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C4293FE8E30058C27F /* TabBarIcon.swift */; };
+		249AD2C7293FE9EE0058C27F /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C6293FE9EE0058C27F /* ViewRouter.swift */; };
+		249AD2C9293FEAD80058C27F /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C8293FEAD80058C27F /* LogoutView.swift */; };
+		249AD2CB293FEB370058C27F /* LogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CA293FEB370058C27F /* LogoutViewModel.swift */; };
 		24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C382901094600D1A2AC /* TabBarView.swift */; };
 		24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C3A29010A0600D1A2AC /* HomeView.swift */; };
 		24B13A8328EB99E3002364E9 /* RSSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8228EB99E3002364E9 /* RSSwiftNetworking */; };
@@ -87,6 +91,10 @@
 		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		249AD2C4293FE8E30058C27F /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
+		249AD2C6293FE9EE0058C27F /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		249AD2C8293FEAD80058C27F /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
+		249AD2CA293FEB370058C27F /* LogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewModel.swift; sourceTree = "<group>"; };
 		24AC5C382901094600D1A2AC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		24AC5C3A29010A0600D1A2AC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadersProvider.swift; sourceTree = "<group>"; };
@@ -253,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				2475D82C28E4DABE00630DE5 /* StateButton.swift */,
+				249AD2C4293FE8E30058C27F /* TabBarIcon.swift */,
 				249567B228E4EFBC00E878A0 /* Textfield */,
 			);
 			path = Common;
@@ -279,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				249567BE28E4FE5600E878A0 /* SignInViewModel.swift */,
+				249AD2CA293FEB370058C27F /* LogoutViewModel.swift */,
 				249567C228E7721F00E878A0 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
@@ -290,6 +300,7 @@
 				2475D80328E3CED700630DE5 /* SignInView.swift */,
 				249567C028E771FD00E878A0 /* SignUpView.swift */,
 				249567C428EA599500E878A0 /* ForgotPasswordView.swift */,
+				249AD2C8293FEAD80058C27F /* LogoutView.swift */,
 				24AC5C382901094600D1A2AC /* TabBarView.swift */,
 				24AC5C3A29010A0600D1A2AC /* HomeView.swift */,
 			);
@@ -352,6 +363,7 @@
 			children = (
 				24B13A9D28EB9B08002364E9 /* UserDataManager.swift */,
 				24B13A9F28EB9B08002364E9 /* SessionManager.swift */,
+				249AD2C6293FE9EE0058C27F /* ViewRouter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -433,7 +445,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					2475D7FD28E3CED700630DE5 = {
 						CreatedOnToolsVersion = 14.0;
@@ -506,6 +518,7 @@
 				249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */,
 				24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */,
 				24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */,
+				249AD2CB293FEB370058C27F /* LogoutViewModel.swift in Sources */,
 				249567BB28E4F04100E878A0 /* Constants.swift in Sources */,
 				24B13A9428EB9AD9002364E9 /* SessionHeadersProvider.swift in Sources */,
 				24B13A9528EB9AD9002364E9 /* APIClient+Application.swift in Sources */,
@@ -525,11 +538,14 @@
 				24B13AA628EB9B74002364E9 /* Session.swift in Sources */,
 				24B13A9B28EB9AD9002364E9 /* AuthenticationServices.swift in Sources */,
 				249567B628E4EFC800E878A0 /* TextFieldViewConfiguration.swift in Sources */,
+				249AD2C9293FEAD80058C27F /* LogoutView.swift in Sources */,
 				2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */,
 				24B13AA028EB9B08002364E9 /* UserDataManager.swift in Sources */,
+				249AD2C5293FE8E30058C27F /* TabBarIcon.swift in Sources */,
 				24B13AAA28EB9FA3002364E9 /* Dictionary.swift in Sources */,
 				249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */,
 				249567A028E4E74E00E878A0 /* Color.swift in Sources */,
+				249AD2C7293FE9EE0058C27F /* ViewRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +615,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -657,6 +674,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -682,8 +700,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_URL = "https://blackmarket-api.herokuapp.com/api/v1";
 				CODE_SIGN_ENTITLEMENTS = blackmarket/blackmarket.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"blackmarket/Preview Content\"";
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -722,8 +742,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BASE_URL = "https://blackmarket-api.herokuapp.com/api/v1";
 				CODE_SIGN_ENTITLEMENTS = blackmarket/blackmarket.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"blackmarket/Preview Content\"";
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -762,6 +784,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -785,6 +808,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -807,6 +831,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -829,6 +854,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = W2U7ETVQ2D;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

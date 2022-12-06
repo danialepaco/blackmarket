@@ -11,12 +11,13 @@ import SwiftUI
 struct blackmarketApp: App {
     
     @State var isAuthenticated = false
+    @StateObject var viewRouter = ViewRouter()
     
     var body: some Scene {
         WindowGroup {
             Group {
                 if isAuthenticated {
-                    TabBarView()
+                    TabBarView(viewRouter: viewRouter)
                 } else {
                     SignInView()
                 }

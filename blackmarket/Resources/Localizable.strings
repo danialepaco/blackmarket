@@ -43,3 +43,6 @@
 "sign_up_cookie_policy" = "Cookie Policy.";
 "sign_up_already_have_account" = "Already have an account? Log in";
 "sign_up_log_in" = "Log in";
+
+// MARK: LOGOUT SCREEN
+"logout_button_title" = "Logout";
