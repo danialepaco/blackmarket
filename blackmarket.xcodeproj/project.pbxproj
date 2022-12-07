@@ -32,6 +32,8 @@
 		249AD2C7293FE9EE0058C27F /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C6293FE9EE0058C27F /* ViewRouter.swift */; };
 		249AD2C9293FEAD80058C27F /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C8293FEAD80058C27F /* LogoutView.swift */; };
 		249AD2CB293FEB370058C27F /* LogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CA293FEB370058C27F /* LogoutViewModel.swift */; };
+		249AD2CD294043AB0058C27F /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */; };
+		249AD2CF294048710058C27F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CE294048710058C27F /* SearchBar.swift */; };
 		24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C382901094600D1A2AC /* TabBarView.swift */; };
 		24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AC5C3A29010A0600D1A2AC /* HomeView.swift */; };
 		24B13A8328EB99E3002364E9 /* RSSwiftNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 24B13A8228EB99E3002364E9 /* RSSwiftNetworking */; };
@@ -95,6 +97,8 @@
 		249AD2C6293FE9EE0058C27F /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		249AD2C8293FEAD80058C27F /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		249AD2CA293FEB370058C27F /* LogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewModel.swift; sourceTree = "<group>"; };
+		249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
+		249AD2CE294048710058C27F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		24AC5C382901094600D1A2AC /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		24AC5C3A29010A0600D1A2AC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		24B13A8928EB9AD9002364E9 /* SessionHeadersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadersProvider.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				2475D82C28E4DABE00630DE5 /* StateButton.swift */,
+				249AD2CE294048710058C27F /* SearchBar.swift */,
+				249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */,
 				249AD2C4293FE8E30058C27F /* TabBarIcon.swift */,
 				249567B228E4EFBC00E878A0 /* Textfield */,
 			);
@@ -515,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				249AD2CD294043AB0058C27F /* PaymentMethodsView.swift in Sources */,
 				249567A628E4E9A900E878A0 /* Validatable+String.swift in Sources */,
 				24AC5C3B29010A0600D1A2AC /* HomeView.swift in Sources */,
 				24AC5C392901094600D1A2AC /* TabBarView.swift in Sources */,
@@ -534,6 +541,7 @@
 				24B13AA228EB9B08002364E9 /* SessionManager.swift in Sources */,
 				249567A328E4E96D00E878A0 /* String.swift in Sources */,
 				249567C128E771FD00E878A0 /* SignUpView.swift in Sources */,
+				249AD2CF294048710058C27F /* SearchBar.swift in Sources */,
 				249567BF28E4FE5600E878A0 /* SignInViewModel.swift in Sources */,
 				24B13AA628EB9B74002364E9 /* Session.swift in Sources */,
 				24B13A9B28EB9AD9002364E9 /* AuthenticationServices.swift in Sources */,

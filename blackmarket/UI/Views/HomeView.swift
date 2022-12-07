@@ -7,11 +7,35 @@
 
 import SwiftUI
 
-//TODO: Create this view
-
 struct HomeView: View {
+    
+    @State var searchText: String = ""
+
     var body: some View {
-        Text("HomeView")
+        ScrollView {
+            VStack {
+                SearchBar(text: $searchText)
+                Image("banner1")
+                PaymentMethodsView()
+                Image("banner2")
+            }
+        }
+        .padding(.top, UI.HomeView.ScrollView.topPadding)
+        .background(Color.homeBackground)
+        .padding(.bottom, UI.HomeView.ScrollView.bottomPadding)
+        .padding(.top, UI.HomeView.topPadding)
+    }
+}
+
+private extension UI {
+    enum HomeView {
+        
+        static let topPadding: CGFloat = -50
+
+        enum ScrollView {
+            static let topPadding: CGFloat = 60
+            static let bottomPadding: CGFloat = -10.0
+        }
     }
 }
 
