@@ -22,12 +22,18 @@ struct SearchBar: View {
                 .background(.white)
                 .cornerRadius(UI.Defaults.cornerRadius)
                 .padding(.horizontal, UI.SearchBar.horizontalPadding)
-            Image(systemName: "magnifyingglass")
+            Image(systemName: Image.SearchBar.magnifyingglassIcon)
                 .renderingMode(.template)
                 .tint(.black)
                 .aspectRatio(contentMode: .fit)
                 .padding(.trailing, UI.SearchBar.Image.trailingPadding)
         }
+    }
+}
+
+private extension Image {
+    enum SearchBar {
+        static let magnifyingglassIcon: String = "magnifyingglass"
     }
 }
 
