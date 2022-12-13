@@ -36,14 +36,7 @@ class LogoutViewModel: ObservableObject, Identifiable {
     
     func logOut() async {
         isFetchingSubject.send(true)
-        let response = await authServices.logout()
-        
-        switch response {
-        case .failure(let error):
-            errorSubject.send(error.localizedDescription)
-        default:
-            break
-        }
+        let _ = await authServices.logout()
         isFetchingSubject.send(false)
     }
 }

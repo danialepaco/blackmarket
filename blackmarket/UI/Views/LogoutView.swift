@@ -10,7 +10,6 @@ import SwiftUI
 struct LogoutView: View {
     
     @ObservedObject var viewModel = LogoutViewModel()
-    @State var errorString = ""
     
     var body: some View {
         StateButton(

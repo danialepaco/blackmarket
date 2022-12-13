@@ -16,8 +16,9 @@ struct SearchBar: View {
         ZStack(alignment: .trailing) {
             TextField(LocalizedString.SearchBarScreen.searchBarPlaceholder, text: $text)
                 .frame(height: UI.SearchBar.TextField.height)
-                .padding(UI.SearchBar.TextField.padding)
-                .padding(.horizontal, UI.SearchBar.TextField.horizontalPadding)
+                .padding(.vertical, UI.SearchBar.TextField.verticalPadding)
+                .padding(.leading, UI.SearchBar.TextField.leadingPadding)
+                .padding(.trailing, UI.SearchBar.TextField.trailingPadding)
                 .background(.white)
                 .cornerRadius(UI.Defaults.cornerRadius)
                 .padding(.horizontal, UI.SearchBar.horizontalPadding)
@@ -37,8 +38,9 @@ private extension UI {
 
         enum TextField {
             static let height: CGFloat = 40.0
-            static let padding: CGFloat = 8.0
-            static let horizontalPadding: CGFloat = 16.0
+            static let verticalPadding: CGFloat = 8.0
+            static let leadingPadding: CGFloat = 16.0
+            static let trailingPadding: CGFloat = 48.0
         }
         
         enum Image {

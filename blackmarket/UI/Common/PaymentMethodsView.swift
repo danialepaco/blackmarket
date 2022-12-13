@@ -10,38 +10,40 @@ import SwiftUI
 struct PaymentMethodsView: View {
     var body: some View {
         VStack(spacing: UI.PaymentMethodsView.VStack.spacing) {
-            Text("Payment methods")
+            Text(LocalizedString.PaymentMethodsScreen.paymentMethodsTitle)
                 .bold()
                 .font(.headline)
             HStack(spacing: UI.PaymentMethodsView.HStack.spacing) {
                 VStack {
-                    Image("cardIcon")
+                    Image(Image.PaymentMethodsView.cardIcon)
                     Text(LocalizedString.PaymentMethodsScreen.paymentMethodsCreditTitle)
                 }
                 Divider()
-                    .frame(
-                        width: UI.PaymentMethodsView.Divider.width,
-                        height: UI.PaymentMethodsView.Divider.height
-                    )
+                    .frame(height: UI.PaymentMethodsView.Divider.height)
                     .overlay(.black)
                 VStack {
-                    Image("paypalIcon")
+                    Image(Image.PaymentMethodsView.paypalIcon)
                     Text(LocalizedString.PaymentMethodsScreen.paymentMethodsPaypalTitle)
                 }
                 Divider()
-                    .frame(
-                        width: UI.PaymentMethodsView.Divider.width,
-                        height: UI.PaymentMethodsView.Divider.height
-                    )
+                    .frame(height: UI.PaymentMethodsView.Divider.height)
                     .overlay(.black)
                 VStack {
-                    Image("cryptoIcon")
+                    Image(Image.PaymentMethodsView.cryptoIcon)
                     Text(LocalizedString.PaymentMethodsScreen.paymentMethodsCryptoTitle)
                 }
             }
-            .padding(.horizontal, 50)
+            .padding(.horizontal, UI.PaymentMethodsView.HStack.horizontalPadding)
         }
         .frame(height: UI.PaymentMethodsView.height)
+    }
+}
+
+private extension Image {
+    enum PaymentMethodsView {
+        static let cardIcon: String = "cardIcon"
+        static let paypalIcon: String = "paypalIcon"
+        static let cryptoIcon: String = "cryptoIcon"
     }
 }
 
@@ -55,6 +57,7 @@ private extension UI {
         
         enum HStack {
             static let spacing: CGFloat = 30.0
+            static let horizontalPadding: CGFloat = 50.0
         }
         
         enum Divider {
@@ -66,6 +69,7 @@ private extension UI {
 
 private extension LocalizedString {
     enum PaymentMethodsScreen {
+        static let paymentMethodsTitle = "payment_methods_title".localized
         static let paymentMethodsCreditTitle = "payment_methods_credit_title".localized
         static let paymentMethodsPaypalTitle = "payment_methods_paypal_title".localized
         static let paymentMethodsCryptoTitle = "payment_methods_crypto_title".localized

@@ -48,6 +48,7 @@
 "logout_button_title" = "Logout";
 
 // MARK: PAYMENT METHODS SCREEN
+"payment_methods_title" = "Payment methods";
 "payment_methods_credit_title" = "Credit";
 "payment_methods_paypal_title" = "Paypal";
 "payment_methods_crypto_title" = "Crypto";

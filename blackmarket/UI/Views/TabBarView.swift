@@ -19,29 +19,39 @@ struct TabBarView: View {
                 case .home:
                     HomeView()
                 case .discounts:
-                    Text("Liked")
+                    Text("discounts")
                 case .cart:
-                   Text("Records")
+                   Text("cart")
                 case .liked:
-                    Text("User")
+                    Text("liked")
                 case .more:
                     LogoutView()
                 }
                 Spacer()
                 ZStack {
                     HStack {
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/5, height: geometry.size.height/28, imageName: "homeIcon")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .discounts, width: geometry.size.width/5, height: geometry.size.height/28, imageName: "discountIcon")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .cart, width: geometry.size.width/5, height: geometry.size.height/28, imageName: "cartIcon")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .liked, width: geometry.size.width/5, height: geometry.size.height/28, imageName: "heartIcon")
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .more, width: geometry.size.width/5, height: geometry.size.height/28, imageName: "moreIcon")
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.homeIcon)
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .discounts, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.discountIcon)
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .cart, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.cartIcon)
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .liked, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.heartIcon)
+                        TabBarIcon(viewRouter: viewRouter, assignedPage: .more, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.moreIcon)
                     }
-                        .frame(width: geometry.size.width, height: geometry.size.height/8)
+                        .frame(width: geometry.size.width, height: geometry.size.height/10)
                         .background(Color.black.shadow(radius: 2))
                 }
             }
                 .edgesIgnoringSafeArea(.bottom)
         }
+    }
+}
+
+private extension Image {
+    enum TabBarView {
+        static let homeIcon: String = "homeIcon"
+        static let discountIcon: String = "discountIcon"
+        static let cartIcon: String = "cartIcon"
+        static let heartIcon: String = "heartIcon"
+        static let moreIcon: String = "moreIcon"
     }
 }
 
