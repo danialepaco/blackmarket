@@ -28,8 +28,6 @@
 		249567C128E771FD00E878A0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C028E771FD00E878A0 /* SignUpView.swift */; };
 		249567C328E7721F00E878A0 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C228E7721F00E878A0 /* SignUpViewModel.swift */; };
 		249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249567C428EA599500E878A0 /* ForgotPasswordView.swift */; };
-		249AD2C5293FE8E30058C27F /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C4293FE8E30058C27F /* TabBarIcon.swift */; };
-		249AD2C7293FE9EE0058C27F /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C6293FE9EE0058C27F /* ViewRouter.swift */; };
 		249AD2C9293FEAD80058C27F /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2C8293FEAD80058C27F /* LogoutView.swift */; };
 		249AD2CB293FEB370058C27F /* LogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CA293FEB370058C27F /* LogoutViewModel.swift */; };
 		249AD2CD294043AB0058C27F /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */; };
@@ -93,8 +91,6 @@
 		249567C028E771FD00E878A0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		249567C228E7721F00E878A0 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		249567C428EA599500E878A0 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		249AD2C4293FE8E30058C27F /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
-		249AD2C6293FE9EE0058C27F /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		249AD2C8293FEAD80058C27F /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 		249AD2CA293FEB370058C27F /* LogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewModel.swift; sourceTree = "<group>"; };
 		249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsView.swift; sourceTree = "<group>"; };
@@ -267,7 +263,6 @@
 				2475D82C28E4DABE00630DE5 /* StateButton.swift */,
 				249AD2CE294048710058C27F /* SearchBar.swift */,
 				249AD2CC294043AB0058C27F /* PaymentMethodsView.swift */,
-				249AD2C4293FE8E30058C27F /* TabBarIcon.swift */,
 				249567B228E4EFBC00E878A0 /* Textfield */,
 			);
 			path = Common;
@@ -369,7 +364,6 @@
 			children = (
 				24B13A9D28EB9B08002364E9 /* UserDataManager.swift */,
 				24B13A9F28EB9B08002364E9 /* SessionManager.swift */,
-				249AD2C6293FE9EE0058C27F /* ViewRouter.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -549,11 +543,9 @@
 				249AD2C9293FEAD80058C27F /* LogoutView.swift in Sources */,
 				2475D80228E3CED700630DE5 /* blackmarketApp.swift in Sources */,
 				24B13AA028EB9B08002364E9 /* UserDataManager.swift in Sources */,
-				249AD2C5293FE8E30058C27F /* TabBarIcon.swift in Sources */,
 				24B13AAA28EB9FA3002364E9 /* Dictionary.swift in Sources */,
 				249567C528EA599500E878A0 /* ForgotPasswordView.swift in Sources */,
 				249567A028E4E74E00E878A0 /* Color.swift in Sources */,
-				249AD2C7293FE9EE0058C27F /* ViewRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

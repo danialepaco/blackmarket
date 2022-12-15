@@ -14,10 +14,6 @@ class LogoutViewModel: ObservableObject, Identifiable {
     private let errorSubject = CurrentValueSubject<String, Never>("")
     private let authServices: AuthenticationServices
     
-    var isValid: AnyPublisher<Bool, Never> {
-        CurrentValueSubject<Bool, Never>(true).eraseToAnyPublisher()
-    }
-    
     var errorPublisher: AnyPublisher<String, Never> {
         errorSubject
             .receive(on: DispatchQueue.main)
