@@ -9,38 +9,38 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @StateObject var viewRouter: ViewRouter
-        
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Spacer()
-                switch viewRouter.currentPage {
-                case .home:
-                    HomeView()
-                case .discounts:
-                    Text("discounts")
-                case .cart:
-                   Text("cart")
-                case .liked:
-                    Text("liked")
-                case .more:
-                    LogoutView()
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(Image.TabBarView.homeIcon)
                 }
-                Spacer()
-                ZStack {
-                    HStack {
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.homeIcon)
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .discounts, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.discountIcon)
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .cart, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.cartIcon)
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .liked, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.heartIcon)
-                        TabBarIcon(viewRouter: viewRouter, assignedPage: .more, width: geometry.size.width/5, height: geometry.size.height/28, imageName: Image.TabBarView.moreIcon)
-                    }
-                        .frame(width: geometry.size.width, height: geometry.size.height/10)
-                        .background(Color.black.shadow(radius: 2))
+            Text("Discounts")
+                .tabItem {
+                    Image(Image.TabBarView.discountIcon)
                 }
-            }
-                .edgesIgnoringSafeArea(.bottom)
+            Text("Cart")
+                .tabItem {
+                    Image(Image.TabBarView.cartIcon)
+                }
+            Text("Liked")
+                .tabItem {
+                    Image(Image.TabBarView.heartIcon)
+                }
+            LogoutView()
+                .tabItem {
+                    Image(Image.TabBarView.moreIcon)
+                }
+        }
+        .tint(.white)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = .black
+            appearance.stackedLayoutAppearance.selected.iconColor = .white
+            appearance.stackedLayoutAppearance.normal.iconColor = .gray
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().scrollEdgeAppearance = appearance
         }
     }
 }
@@ -57,7 +57,6 @@ private extension Image {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView(viewRouter: ViewRouter())
-            .preferredColorScheme(.light)
+        TabBarView()
     }
 }
