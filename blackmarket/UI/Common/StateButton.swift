@@ -13,8 +13,20 @@ struct StateButton: View {
     let title: String
     @State private var isEnabled: Bool = false
     @State private var isLoading: Bool = false
-    var isValid: AnyPublisher<Bool, Never> = Just(true).eraseToAnyPublisher()
+    let isValid: AnyPublisher<Bool, Never>
     let isFetching: AnyPublisher<Bool, Never>
+    
+    init(
+        action: @escaping () -> Void,
+        title: String,
+        isValid: AnyPublisher<Bool, Never> = Just(true).eraseToAnyPublisher(),
+        isFetching: AnyPublisher<Bool, Never>
+    ) {
+        self.action = action
+        self.title = title
+        self.isValid = isValid
+        self.isFetching = isFetching
+    }
 
     var body: some View {
         Button(action: {
@@ -38,7 +50,7 @@ struct StateButton: View {
                 isEnabled ? Color.black : Color.bone
             )
         }
-        .cornerRadius(8)
+        .cornerRadius(UI.Defaults.cornerRadius)
         .disabled(!isEnabled)
         .onReceive(isValid) { isValid in
             isEnabled = isValid
