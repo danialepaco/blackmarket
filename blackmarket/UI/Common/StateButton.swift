@@ -13,7 +13,7 @@ struct StateButton: View {
     let title: String
     @State private var isEnabled: Bool = false
     @State private var isLoading: Bool = false
-    let isValid: AnyPublisher<Bool, Never>
+    var isValid: AnyPublisher<Bool, Never> = Just(true).eraseToAnyPublisher()
     let isFetching: AnyPublisher<Bool, Never>
 
     var body: some View {
@@ -51,10 +51,8 @@ struct StateButton: View {
 
 struct StateButton_Previews: PreviewProvider {
     static var previews: some View {
-        let validSubject = CurrentValueSubject<Bool, Never>(false)
-        let isValid: AnyPublisher<Bool, Never> = validSubject.eraseToAnyPublisher()
         let fetchingSubject = CurrentValueSubject<Bool, Never>(false)
         let isFetching: AnyPublisher<Bool, Never> = fetchingSubject.eraseToAnyPublisher()
-        StateButton(action: {}, title: "Button", isValid: isValid, isFetching: isFetching)
+        StateButton(action: {}, title: "Button", isFetching: isFetching)
     }
 }

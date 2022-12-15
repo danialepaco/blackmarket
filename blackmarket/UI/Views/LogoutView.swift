@@ -19,7 +19,6 @@ struct LogoutView: View {
                 }
             },
             title: LocalizedString.LogoutScreen.logoutButtonTitle,
-            isValid: viewModel.isValid,
             isFetching: viewModel.isFetchingPublisher
         )
         .frame(maxHeight: UI.LogoutView.StateButton.maxHeight)

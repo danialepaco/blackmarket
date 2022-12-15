@@ -13,21 +13,20 @@ struct SearchBar: View {
     @State private var isEditing = false
  
     var body: some View {
-        ZStack(alignment: .trailing) {
+        HStack {
             TextField(LocalizedString.SearchBarScreen.searchBarPlaceholder, text: $text)
                 .frame(height: UI.SearchBar.TextField.height)
                 .padding(.vertical, UI.SearchBar.TextField.verticalPadding)
-                .padding(.leading, UI.SearchBar.TextField.leadingPadding)
-                .padding(.trailing, UI.SearchBar.TextField.trailingPadding)
-                .background(.white)
-                .cornerRadius(UI.Defaults.cornerRadius)
-                .padding(.horizontal, UI.SearchBar.horizontalPadding)
+                .padding(.horizontal, UI.SearchBar.TextField.horizontalPadding)
             Image(systemName: Image.SearchBar.magnifyingglassIcon)
                 .renderingMode(.template)
                 .tint(.black)
                 .aspectRatio(contentMode: .fit)
                 .padding(.trailing, UI.SearchBar.Image.trailingPadding)
         }
+        .background(.white)
+        .cornerRadius(UI.Defaults.cornerRadius)
+        .padding(.horizontal, UI.SearchBar.horizontalPadding)
     }
 }
 
@@ -45,12 +44,11 @@ private extension UI {
         enum TextField {
             static let height: CGFloat = 40.0
             static let verticalPadding: CGFloat = 8.0
-            static let leadingPadding: CGFloat = 16.0
-            static let trailingPadding: CGFloat = 48.0
+            static let horizontalPadding: CGFloat = 16.0
         }
         
         enum Image {
-            static let trailingPadding: CGFloat = 32.0
+            static let trailingPadding: CGFloat = 16.0
         }
     }
 }
