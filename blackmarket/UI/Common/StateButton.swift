@@ -15,6 +15,18 @@ struct StateButton: View {
     @State private var isLoading: Bool = false
     let isValid: AnyPublisher<Bool, Never>
     let isFetching: AnyPublisher<Bool, Never>
+    
+    init(
+        action: @escaping () -> Void,
+        title: String,
+        isValid: AnyPublisher<Bool, Never> = Just(true).eraseToAnyPublisher(),
+        isFetching: AnyPublisher<Bool, Never>
+    ) {
+        self.action = action
+        self.title = title
+        self.isValid = isValid
+        self.isFetching = isFetching
+    }
 
     var body: some View {
         Button(action: {
@@ -38,7 +50,7 @@ struct StateButton: View {
                 isEnabled ? Color.black : Color.bone
             )
         }
-        .cornerRadius(8)
+        .cornerRadius(UI.Defaults.cornerRadius)
         .disabled(!isEnabled)
         .onReceive(isValid) { isValid in
             isEnabled = isValid
@@ -51,10 +63,8 @@ struct StateButton: View {
 
 struct StateButton_Previews: PreviewProvider {
     static var previews: some View {
-        let validSubject = CurrentValueSubject<Bool, Never>(false)
-        let isValid: AnyPublisher<Bool, Never> = validSubject.eraseToAnyPublisher()
         let fetchingSubject = CurrentValueSubject<Bool, Never>(false)
         let isFetching: AnyPublisher<Bool, Never> = fetchingSubject.eraseToAnyPublisher()
-        StateButton(action: {}, title: "Button", isValid: isValid, isFetching: isFetching)
+        StateButton(action: {}, title: "Button", isFetching: isFetching)
     }
 }

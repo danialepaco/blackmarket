@@ -12,6 +12,7 @@ extension Color {
     static let disabledGray = Color("disabledGray")
     static let bone = Color("bone")
     static let errorRed = Color("errorRed")
+    static let homeBackground = Color("homeBackground")
 }
 
 // Color extension to use hex values

@@ -42,7 +42,7 @@ internal class SessionManager: CurrentUserSessionProvider {
     }
     
     func deleteSession() {
-        userDefaults.removeObject(forKey: SessionManager.SESSIONKEY)
+        currentSession = nil
     }
     
     @MainActor func saveUser(session: Session) {

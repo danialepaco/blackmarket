@@ -43,3 +43,16 @@
 "sign_up_cookie_policy" = "Cookie Policy.";
 "sign_up_already_have_account" = "Already have an account? Log in";
 "sign_up_log_in" = "Log in";
+
+// MARK: LOGOUT SCREEN
+"logout_button_title" = "Logout";
+
+// MARK: PAYMENT METHODS SCREEN
+"payment_methods_title" = "Payment methods";
+"payment_methods_credit_title" = "Credit";
+"payment_methods_paypal_title" = "Paypal";
+"payment_methods_crypto_title" = "Crypto";
+
+// MARK: SEARCH BAR
+"search_bar_placeholder" = "Search for products";
+
